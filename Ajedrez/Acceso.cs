@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Xml.Linq;
 
 namespace WindowsFormsApp1
 {
@@ -62,6 +63,12 @@ namespace WindowsFormsApp1
         {
             SqlCommand cmd = CrearComando(sql);
             return int.Parse(cmd.ExecuteScalar().ToString());
+        }
+
+        public bool ExisteUsuarioByName(String name)
+        {
+            SqlCommand cmd = CrearComando($"select id from usuario where name='{name}'");
+            return cmd.ExecuteScalar().ToString() != null;
         }
 
     }

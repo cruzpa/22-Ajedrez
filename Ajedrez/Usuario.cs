@@ -19,8 +19,7 @@ namespace Ajedrez
         {
             Acceso.Abrir();
             int resultado = 0;
-            int someId = Acceso.LeerEscalar($"select id from usuario where name='{Name}'");
-            if (someId != null)
+            if (Acceso.ExisteUsuarioByName(Name))
             {
                 Console.WriteLine("El usuario ya existe");
                 resultado = -2;
@@ -39,6 +38,13 @@ namespace Ajedrez
             Usuario usuario = null;
             Acceso Acceso = new Acceso();
             Acceso.Abrir();
+            if( !Acceso.ExisteUsuarioByName(name))
+            {
+                Console.WriteLine("El usuario no existe");
+                //aca podria tirar una excepcion y atajarla arriba
+                return null;
+            }
+
             SqlDataReader reader = Acceso.Leer($"select id, name, pass from usuario where name='{name}' and pass='{pass}'");
             while (reader.Read())
             {
@@ -51,6 +57,13 @@ namespace Ajedrez
             }
             reader.Close();
             Acceso.Cerrar();
+
+            if(usuario == null)
+            {
+                Console.WriteLine("La contraseña es incorrecta");
+                //aca tirar otra excepcion.
+            }
+
             return usuario;
         }
     }
