@@ -14,6 +14,7 @@ namespace Ajedrez
     {
 
         public Usuario usuario;
+        public bool userLogguedSuccess;
         public Login()
         {
             InitializeComponent();
@@ -33,15 +34,16 @@ namespace Ajedrez
 
                 if (usuario != null)
                 {
+                    userLogguedSuccess = true;
                     MessageBox.Show("Usuario logueado correctamente");
                     Limpiar(); //volver a la pantalla anterior
+                    this.Hide();
                 }
                 else
                 {
                     MessageBox.Show("No existe el usuario.");
                 }
 
-                usuario = null;
             }
         }
 
@@ -85,6 +87,9 @@ namespace Ajedrez
             textBox2.Text = "";
         }
 
-
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
