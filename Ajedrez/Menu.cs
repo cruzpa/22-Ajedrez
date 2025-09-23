@@ -12,8 +12,8 @@ namespace Ajedrez
 {
     public partial class Menu : Form
     {
-        public Usuario usuarioBlancas;
-        public Usuario usuarioNegras;
+        public Jugador jugadorBlancas;
+        public Jugador jugadorNegras;
 
         public Menu()
         {
@@ -25,19 +25,14 @@ namespace Ajedrez
             this.Hide();
             Login login = new Login();
             login.ShowDialog();
-            if (login.usuario != null && login.userLogguedSuccess)
+            if (login.jugador != null && login.userLogguedSuccess)
             {
-                usuarioBlancas = login.usuario;
-                login.usuario = null;
+                jugadorBlancas = login.jugador;
+                login.jugador = null;
             }
 
             this.Show();
-            button1.Text = usuarioBlancas != null ? usuarioBlancas.Name : "Jugador1 Ingresar!";
-        }
-
-        private void userBlancas_TextChanged(object sender, EventArgs e)
-        {
-
+            button1.Text = jugadorBlancas != null ? jugadorBlancas.Name : "Jugador1 Ingresar!";
         }
     }
 }

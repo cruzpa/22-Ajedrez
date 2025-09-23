@@ -13,7 +13,7 @@ namespace Ajedrez
     public partial class Login : Form
     {
 
-        public Usuario usuario;
+        public Jugador jugador;
         public bool userLogguedSuccess;
         public Login()
         {
@@ -29,21 +29,18 @@ namespace Ajedrez
         {
             if (!isEmpty(textBox1.Text) && !isEmpty(textBox2.Text))
             {
-
-                usuario = Usuario.Leer(textBox1.Text, textBox2.Text);
-
-                if (usuario != null)
+                jugador = Jugador.Leer(textBox1.Text, textBox2.Text);
+                if (jugador != null)
                 {
                     userLogguedSuccess = true;
-                    MessageBox.Show("Usuario logueado correctamente");
+                    MessageBox.Show("Jugador logueado correctamente");
                     Limpiar(); //volver a la pantalla anterior
                     this.Hide();
                 }
                 else
                 {
-                    MessageBox.Show("No existe el usuario.");
+                    MessageBox.Show("No existe el jugador.");
                 }
-
             }
         }
 
@@ -51,28 +48,25 @@ namespace Ajedrez
         {
             if (!isEmpty(textBox1.Text) && !isEmpty(textBox2.Text))
             {
-                usuario = new Usuario();
-                usuario.Name = textBox1.Text;
-                usuario.Pass = textBox2.Text;
-
-                int resultado = usuario.Insertar();
-                usuario = null;
+                jugador = new Jugador();
+                jugador.Name = textBox1.Text;
+                jugador.Pass = textBox2.Text;
+                int resultado = jugador.Insertar();
+                jugador = null;
                 if(resultado > 0)
                 {
-                    MessageBox.Show("Usuario registrado");
+                    MessageBox.Show("Jugador registrado");
                     Limpiar(); //volver a la pantalla anterior
                 }
                 else if (resultado == -2)
                 {
-                    MessageBox.Show("El usuario ya existe");
+                    MessageBox.Show("El jugador ya existe");
                     Limpiar();
                 }
                 else
                 {
-                    MessageBox.Show("Error al registrar usuario.");
+                    MessageBox.Show("Error al registrar jugador.");
                 }
-
-
             }
         }
 
