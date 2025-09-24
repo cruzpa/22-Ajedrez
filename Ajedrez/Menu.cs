@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Ajedrez
 {
@@ -22,17 +23,38 @@ namespace Ajedrez
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Login login = new Login();
-            login.ShowDialog();
-            if (login.jugador != null && login.userLogguedSuccess)
-            {
-                jugadorBlancas = login.jugador;
-                login.jugador = null;
-            }
+            jugadorBlancas = getJugador(userBlancas.Text, passBlancas.Text);
+            infoLogueo(jugadorBlancas);
 
-            this.Show();
-            button1.Text = jugadorBlancas != null ? jugadorBlancas.Name : "Jugador1 Ingresar!";
+
         }
+
+        private Jugador getJugador(string username, string password)
+        {
+            if (!isEmpty(username) && !isEmpty(password))
+            {
+                return Jugador.Leer(username, password);
+            }
+            return null;
+        }
+        private bool isEmpty(string s)
+        {
+            return s == null || s.Length == 0;
+        }
+
+        private void infoLogueo(Jugador jugador)
+        {
+            if (jugador != null) 
+            {
+                MessageBox.Show("Jugador logueado correctamente");
+                //Cambiar estado de botones, agregar desloguear; //volver a la pantalla anterior
+            }
+            else
+            {
+                MessageBox.Show("No existe el jugador.");
+            }
+        }
+
+
     }
 }

@@ -32,7 +32,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.userBlancas = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.passBlancas = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -99,14 +99,14 @@
             this.userBlancas.Size = new System.Drawing.Size(309, 30);
             this.userBlancas.TabIndex = 4;
             // 
-            // textBox2
+            // passBlancas
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(103, 260);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(309, 30);
-            this.textBox2.TabIndex = 5;
+            this.passBlancas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passBlancas.Location = new System.Drawing.Point(103, 260);
+            this.passBlancas.Margin = new System.Windows.Forms.Padding(4);
+            this.passBlancas.Name = "passBlancas";
+            this.passBlancas.Size = new System.Drawing.Size(309, 30);
+            this.passBlancas.TabIndex = 5;
             // 
             // label3
             // 
@@ -361,7 +361,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.passBlancas);
             this.Controls.Add(this.userBlancas);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
@@ -380,7 +380,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox userBlancas;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox passBlancas;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
