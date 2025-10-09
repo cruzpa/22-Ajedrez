@@ -37,5 +37,58 @@ namespace WindowsFormsApp1
             dataGridView1.DataSource = gestor.Listar();
 
         }
+
+        private void grabar()
+        {
+            if (producto == null)
+            {
+                producto = new BE.Producto();
+
+
+            }
+            producto.Nombre = textBox1.Text;
+            producto.Precio = float.Parse(textBox2.Text);
+            gestor.Grabar(producto);
+            producto = null;
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            grabar();
+            Enlazar();
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            producto = dataGridView1.Rows[e.RowIndex].DataBoundItem as BE.Producto;
+
+                textBox1.Text = producto.Nombre;
+            textBox2.Text = producto.Precio.ToString();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (producto != null)
+            {
+                grabar();
+                Enlazar();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (producto != null)
+            {
+                gestor.Borrar(producto);
+                Enlazar();
+            }
+        }
     }
 }
