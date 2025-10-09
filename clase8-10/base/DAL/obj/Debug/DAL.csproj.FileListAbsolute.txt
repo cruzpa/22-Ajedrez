@@ -1,0 +1,14 @@
+C:\Users\Navegador\source\repos\BE\DAL\bin\Debug\DAL.exe.config
+C:\Users\Navegador\source\repos\BE\DAL\bin\Debug\DAL.exe
+C:\Users\Navegador\source\repos\BE\DAL\bin\Debug\DAL.pdb
+C:\Users\Navegador\source\repos\BE\DAL\bin\Debug\BE.exe
+C:\Users\Navegador\source\repos\BE\DAL\bin\Debug\BE.pdb
+C:\Users\Navegador\source\repos\BE\DAL\bin\Debug\BE.exe.config
+C:\Users\Navegador\source\repos\BE\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\Users\Navegador\source\repos\BE\DAL\obj\Debug\DAL.Properties.Resources.resources
+C:\Users\Navegador\source\repos\BE\DAL\obj\Debug\DAL.csproj.GenerateResource.cache
+C:\Users\Navegador\source\repos\BE\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Navegador\source\repos\BE\DAL\obj\Debug\DAL.csproj.Up2Date
+C:\Users\Navegador\source\repos\BE\DAL\obj\Debug\DAL.exe
+C:\Users\Navegador\source\repos\BE\DAL\obj\Debug\DAL.pdb
+C:\Users\Navegador\source\repos\BE\DAL\obj\Debug\DAL.exe.config
