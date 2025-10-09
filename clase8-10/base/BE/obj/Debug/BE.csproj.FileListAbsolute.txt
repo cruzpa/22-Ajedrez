@@ -1,0 +1,9 @@
+C:\Users\Navegador\source\repos\BE\BE\bin\Debug\BE.exe.config
+C:\Users\Navegador\source\repos\BE\BE\bin\Debug\BE.exe
+C:\Users\Navegador\source\repos\BE\BE\bin\Debug\BE.pdb
+C:\Users\Navegador\source\repos\BE\BE\obj\Debug\BE.csproj.AssemblyReference.cache
+C:\Users\Navegador\source\repos\BE\BE\obj\Debug\BE.Properties.Resources.resources
+C:\Users\Navegador\source\repos\BE\BE\obj\Debug\BE.csproj.GenerateResource.cache
+C:\Users\Navegador\source\repos\BE\BE\obj\Debug\BE.csproj.CoreCompileInputs.cache
+C:\Users\Navegador\source\repos\BE\BE\obj\Debug\BE.exe
+C:\Users\Navegador\source\repos\BE\BE\obj\Debug\BE.pdb
