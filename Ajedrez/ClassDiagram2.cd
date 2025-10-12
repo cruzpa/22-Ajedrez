@@ -3,14 +3,14 @@
   <Class Name="WindowsFormsApp1.Acceso" Collapsed="true">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>FABAAAAAAAAAAAAAAAAAAAAAAACAAABAIAAAAAAAAAE=</HashCode>
+      <HashCode>FABAAAAAAAAAAAAAAAAAAAABAACAAABAIAAAAAAAAAE=</HashCode>
       <FileName>Acceso.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ajedrez.Login" Collapsed="true">
     <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACAAAAAAACAAABAAAACAABACAIAYAAQAEGAAAAAAQAA=</HashCode>
+      <HashCode>ASAAAAAAACAAABAAAACAIBACAIA4AAAAEHAAAAAAQAA=</HashCode>
       <FileName>Login.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -21,11 +21,11 @@
       <FileName>Tablero.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Ajedrez.Usuario">
+  <Class Name="Ajedrez.Jugador">
     <Position X="2.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAQAAEAAAAAAAAQAAIAAAAAAAAAAAAAAAgA=</HashCode>
-      <FileName>Usuario.cs</FileName>
+      <HashCode>AAACAAAAAAQAAEAAAAAAAAQAAIAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Jugador.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

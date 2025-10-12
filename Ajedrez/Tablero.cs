@@ -6,9 +6,11 @@ using System.Text;
 namespace Ajedrez
 {
     public class Tablero
-    {
-        //pp2
-        //Server=localhost;Database=master;Trusted_Connection=True;
-        //aberesto
+    { 
+        public Tablero() { }
+    
+        //necesito que tenga una matriz de casilleros 8x8
+        public Casillero[,] casilleros = new Casillero[8, 8];
+
     }
 }
