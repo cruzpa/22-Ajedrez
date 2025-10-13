@@ -7,6 +7,8 @@ namespace Ajedrez
 {
     public abstract class Pieza
     {
+        public string Imagen { get; set; }
+
         public void Mover()
         {
             throw new System.NotImplementedException();

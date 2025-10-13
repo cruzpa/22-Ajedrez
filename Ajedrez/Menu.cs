@@ -15,6 +15,7 @@ namespace Ajedrez
     {
         public Jugador jugadorBlancas;
         public Jugador jugadorNegras;
+        public Mesa Mesa = new Mesa();
 
         public Menu()
         {
@@ -58,6 +59,16 @@ namespace Ajedrez
         private void button3_Click(object sender, EventArgs e)
         {
             //crear usuario..
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Mesa.ShowDialog();
+        }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+            pictureBox1.Image = Image.FromFile("img\\wk.png");
         }
     }
 }

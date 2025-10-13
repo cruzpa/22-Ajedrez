@@ -7,5 +7,9 @@ namespace Ajedrez
 {
     public class Reyna : Pieza
     {
+        public Reyna()
+        {
+            Imagen = "@img/wq.png";
+        }
     }
 }

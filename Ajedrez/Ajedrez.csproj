@@ -50,6 +50,7 @@
     <Compile Include="Alfil.cs" />
     <Compile Include="Caballo.cs" />
     <Compile Include="Casillero.cs" />
+    <Compile Include="DelEnviarCasillero.cs" />
     <Compile Include="Juego.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -63,6 +64,12 @@
     <Compile Include="Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mesa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mesa.Designer.cs">
+      <DependentUpon>Mesa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Peon.cs" />
     <Compile Include="Pieza.cs" />
     <Compile Include="Program.cs" />
@@ -73,11 +80,20 @@
     <Compile Include="Jugador.cs" />
     <Compile Include="Torre.cs" />
     <Compile Include="Turno.cs" />
+    <Compile Include="UI_CASILLERO.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI_CASILLERO.Designer.cs">
+      <DependentUpon>UI_CASILLERO.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mesa.resx">
+      <DependentUpon>Mesa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -88,6 +104,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI_CASILLERO.resx">
+      <DependentUpon>UI_CASILLERO.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />
     <None Include="Properties\Settings.settings">
@@ -102,6 +121,44 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="img\bb.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\bk.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\bn.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\bp.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\bq.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\br.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\wb.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\wk.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\wn.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\wp.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\wq.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\wr.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -7,5 +7,10 @@ namespace Ajedrez
 {
     public class Rey : Pieza
     {
+
+        public Rey()
+        {
+            Imagen = "img\\wk.png";
+        }
     }
 }

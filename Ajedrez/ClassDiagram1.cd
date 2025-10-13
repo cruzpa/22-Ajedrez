@@ -3,7 +3,7 @@
   <Class Name="Ajedrez.Tablero">
     <Position X="2.5" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAACAAAAA=</HashCode>
       <FileName>Tablero.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -17,14 +17,14 @@
   <Class Name="Ajedrez.Casillero">
     <Position X="2.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAYAA=</HashCode>
       <FileName>Casillero.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ajedrez.Pieza">
     <Position X="4" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
       <FileName>Pieza.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -77,5 +77,12 @@
       <FileName>Turno.cs</FileName>
     </TypeIdentifier>
   </Enum>
+  <Delegate Name="Ajedrez.DelEnviarCasillero">
+    <Position X="7.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DelEnviarCasillero.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
