@@ -39,8 +39,16 @@ namespace Ajedrez
 
         public void SetearImagen()
         {
+            if(Casillero.Pieza.Imagen != null)
+            {
+
+                //pictureBox1.BackColor = Color.Red;
+                pictureBox1.Image = Image.FromFile(Casillero.Pieza.Imagen);
+            } else
+            {
+                pictureBox1.BackColor = Color.Red;
+            }
             
-            pictureBox1.Image = Image.FromFile(Casillero.Pieza.Imagen);
 
         }
 
