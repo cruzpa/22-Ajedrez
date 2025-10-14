@@ -13,25 +13,43 @@ namespace Ajedrez
     public partial class Mesa : Form
     {
         public Tablero tablero = new Tablero(); 
+        public Juego juego = new Juego();
         public Mesa()
         {
             InitializeComponent();
+            this.ClientSize = new Size(600, 600);
+            this.MinimumSize = new Size(600, 600);
             tablero.EnviarCasillero += Tablero_EnviarCasillero;
         }
 
         private void Tablero_EnviarCasillero(Casillero casillero)
         {
+            int separacion = 0;
             UI_CASILLERO ui_casillero = new UI_CASILLERO();
             ui_casillero.Location = new Point(
-                (casillero.X) * casillero.Ancho + (10 * casillero.X),
-                (casillero.Y) * casillero.Ancho + (10 * casillero.Y)
+                (casillero.X) * casillero.Ancho + (separacion * casillero.X),
+                (casillero.Y) * casillero.Ancho + (separacion * casillero.Y)
                 );
             ui_casillero.Size = new Size(casillero.Ancho, casillero.Ancho);
             ui_casillero.Casillero = casillero;
 
-            //`ui_casillero.EnviarCasillero += Cas_EnviarCasillero;
+            ui_casillero.EnviarCasillero += Cas_EnviarCasillero;
 
             this.Controls.Add(ui_casillero);
+        }
+
+        private void Cas_EnviarCasillero(Casillero casillero)
+        {
+            juego.CompararCasillero(casillero);
+            
+            //actualizar tablerinho
+            foreach (Control control in this.Controls)
+            {
+                if (control is UI_CASILLERO ui_casillero)
+                {
+                    ui_casillero.SetearImagen();
+                }
+            }
         }
 
         private void Mesa_Shown(object sender, EventArgs e)

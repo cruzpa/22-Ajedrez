@@ -7,5 +7,11 @@ namespace Ajedrez
 {
     public class Alfil : Pieza
     {
+        public Alfil(ColorPieza color) : base(color)
+        {
+            Imagen = color == ColorPieza.Blanco
+            ? "img\\wb.png"
+            : "img\\bb.png";
+        }
     }
 }

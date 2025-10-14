@@ -50,6 +50,7 @@
     <Compile Include="Alfil.cs" />
     <Compile Include="Caballo.cs" />
     <Compile Include="Casillero.cs" />
+    <Compile Include="ColorPieza.cs" />
     <Compile Include="DelEnviarCasillero.cs" />
     <Compile Include="Juego.cs" />
     <Compile Include="Login.cs">

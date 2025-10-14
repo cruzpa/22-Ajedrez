@@ -7,9 +7,11 @@ namespace Ajedrez
 {
     public class Reyna : Pieza
     {
-        public Reyna()
+        public Reyna(ColorPieza color) : base(color)
         {
-            Imagen = "@img/wq.png";
+            Imagen = color == ColorPieza.Blanco
+            ? "img\\wq.png"
+            : "img\\bq.png";
         }
     }
 }

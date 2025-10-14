@@ -16,6 +16,9 @@ namespace Ajedrez
 
         public Turno turno;
 
+        public Casillero casilleroPrevio = null;
+
+        public Juego() { }
         public Juego(Jugador blancas, Jugador negras)
         {
             this.Blancas = blancas;
@@ -23,6 +26,26 @@ namespace Ajedrez
             this.tablero = new Tablero();
             this.tableroAux = new Tablero();
             this.turno = Turno.Blancas;
+        }
+
+        public void CompararCasillero(Casillero casillero)
+        {
+            if (casilleroPrevio == null & casillero.Pieza != null)
+            {
+                casilleroPrevio = casillero;
+            }
+            else
+            {
+                if (casilleroPrevio.Pieza != null)
+                {
+                    casillero.Pieza = casilleroPrevio.Pieza;
+                    casilleroPrevio.Pieza = null;
+                }
+
+                turno = (turno == Turno.Blancas) ? Turno.Negras : Turno.Blancas;
+                casilleroPrevio = null;
+
+            }
         }
     }
 }

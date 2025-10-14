@@ -7,10 +7,11 @@ namespace Ajedrez
 {
     public class Rey : Pieza
     {
-
-        public Rey()
+        public Rey(ColorPieza color) : base(color)   
         {
-            Imagen = "img\\wk.png";
+            Imagen = color == ColorPieza.Blanco
+            ? "img\\wk.png"
+            : "img\\bk.png";
         }
     }
 }
