@@ -10,15 +10,13 @@ namespace Ajedrez
     { 
         public event DelEnviarCasillero EnviarCasillero;
         public Tablero() { }
-    
-        public List<Casillero> casilleros = new List<Casillero>();
 
         public void InicializarTablero()
         {
 
-            for (int y = 1; y <= 8; y++)
+            for (int y = 8; y >= 1; y--) // filas de 8 a 1
             {
-                for (int x = 1; x <= 8; x++)
+                for (int x = 1; x <= 8; x++) // columnas de 1 a 8
                 {
                     Casillero casillero = new Casillero();
                     casillero.X = x;
@@ -28,7 +26,6 @@ namespace Ajedrez
                     casillero.ColorFondo = ((x + y) % 2 == 0) ? Color.Beige : Color.SaddleBrown;
 
                     this.EnviarCasillero(casillero);
-                    casilleros.Add(casillero);
                 }
             }
 
@@ -36,29 +33,8 @@ namespace Ajedrez
 
         private Pieza SetPieza(int x, int y)
         {
-            // Fila 1 y 2 = negras
+            // Fila 1 y 2 = Blancas
             if (y == 1)
-            {
-                switch (x)
-                {
-                    case 1: case 8: return new Torre(ColorPieza.Negro);
-                    case 2: case 7: return new Caballo(ColorPieza.Negro);
-                    case 3: case 6: return new Alfil(ColorPieza.Negro);
-                    case 4: return new Reyna(ColorPieza.Negro);
-                    case 5: return new Rey(ColorPieza.Negro);
-                }
-            }
-            else if (y == 2)
-            {
-                return new Peon(ColorPieza.Negro);
-            }
-
-            // Fila 7 y 8 = blancas
-            if (y == 7)
-            {
-                return new Peon(ColorPieza.Blanco);
-            }
-            else if (y == 8)
             {
                 switch (x)
                 {
@@ -69,10 +45,29 @@ namespace Ajedrez
                     case 5: return new Rey(ColorPieza.Blanco);
                 }
             }
+            else if (y == 2)
+            {
+                return new Peon(ColorPieza.Blanco);
+            }
+
+            // Fila 7 y 8 = Negras
+            if (y == 7)
+            {
+                return new Peon(ColorPieza.Negro);
+            }
+            else if (y == 8)
+            {
+                switch (x)
+                {
+                    case 1: case 8: return new Torre(ColorPieza.Negro);
+                    case 2: case 7: return new Caballo(ColorPieza.Negro);
+                    case 3: case 6: return new Alfil(ColorPieza.Negro);
+                    case 4: return new Reyna(ColorPieza.Negro);
+                    case 5: return new Rey(ColorPieza.Negro);
+                }
+            }
 
             return null; // casilla vacía
         }
-
-
     }
 }

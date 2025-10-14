@@ -30,22 +30,26 @@ namespace Ajedrez
 
         public void CompararCasillero(Casillero casillero)
         {
-            if (casilleroPrevio == null & casillero.Pieza != null)
+            if (casilleroPrevio == null && casillero.Pieza != null)
             {
+                //no comparo pq no tengo contra quien.
+                casillero.Seleccionado = true;
                 casilleroPrevio = casillero;
+                return;
             }
-            else
+
+            if (casilleroPrevio != null)
             {
-                if (casilleroPrevio.Pieza != null)
-                {
-                    casillero.Pieza = casilleroPrevio.Pieza;
-                    casilleroPrevio.Pieza = null;
-                }
-
-                turno = (turno == Turno.Blancas) ? Turno.Negras : Turno.Blancas;
-                casilleroPrevio = null;
-
+                casillero.Pieza = casilleroPrevio.Pieza;
+                casilleroPrevio.Pieza = null;
+                casilleroPrevio.Seleccionado = false;
             }
+
+            //si movimiento valido -> pasar turno
+            turno = (turno == Turno.Blancas) ? Turno.Negras : Turno.Blancas;
+            casilleroPrevio = null;
+
+
         }
     }
 }

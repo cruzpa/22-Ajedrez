@@ -12,7 +12,7 @@ namespace Ajedrez
 {
     public partial class Mesa : Form
     {
-        public Tablero tablero = new Tablero(); 
+        public Tablero tablero = new Tablero();
         public Juego juego = new Juego();
         public Mesa()
         {
@@ -25,14 +25,15 @@ namespace Ajedrez
         private void Tablero_EnviarCasillero(Casillero casillero)
         {
             int separacion = 0;
+            int totalFilas = 9; //para que quede centrado
+
             UI_CASILLERO ui_casillero = new UI_CASILLERO();
             ui_casillero.Location = new Point(
-                (casillero.X) * casillero.Ancho + (separacion * casillero.X),
-                (casillero.Y) * casillero.Ancho + (separacion * casillero.Y)
+                (casillero.X) * (casillero.Ancho + separacion),
+                (totalFilas - casillero.Y) * (casillero.Ancho + separacion)
                 );
             ui_casillero.Size = new Size(casillero.Ancho, casillero.Ancho);
             ui_casillero.Casillero = casillero;
-
             ui_casillero.EnviarCasillero += Cas_EnviarCasillero;
 
             this.Controls.Add(ui_casillero);
@@ -40,8 +41,9 @@ namespace Ajedrez
 
         private void Cas_EnviarCasillero(Casillero casillero)
         {
+
             juego.CompararCasillero(casillero);
-            
+
             //actualizar tablerinho
             foreach (Control control in this.Controls)
             {
