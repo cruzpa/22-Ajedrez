@@ -12,6 +12,15 @@ namespace Ajedrez
             Imagen = color == ColorPieza.Blanco
             ? "img\\wk.png"
             : "img\\bk.png";
+            Nombre = 'K';
+        }
+        public override bool PuedeMover(Tablero tablero, Casillero origen, Casillero destino)
+        {
+            int dx = Math.Abs(destino.X - origen.X);
+            int dy = Math.Abs(destino.Y - origen.Y);
+            
+            // El rey se mueve una casilla en cualquier direccion
+            return (dx <= 1 && dy <= 1) && (dx + dy != 0);
         }
     }
 }

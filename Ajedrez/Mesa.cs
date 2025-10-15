@@ -12,13 +12,16 @@ namespace Ajedrez
 {
     public partial class Mesa : Form
     {
-        public Tablero tablero = new Tablero();
-        public Juego juego = new Juego();
+        public Tablero tablero;
+        public Juego juego;
         public Mesa()
         {
             InitializeComponent();
             this.ClientSize = new Size(600, 600);
             this.MinimumSize = new Size(600, 600);
+            tablero = new Tablero();
+            juego = new Juego(tablero);
+
             tablero.EnviarCasillero += Tablero_EnviarCasillero;
         }
 

@@ -9,11 +9,12 @@ namespace Ajedrez
     public class Tablero
     { 
         public event DelEnviarCasillero EnviarCasillero;
+        private Casillero[,] casilleros = new Casillero[9, 9];
         public Tablero() { }
 
         public void InicializarTablero()
         {
-
+            int ancho = 60;
             for (int y = 8; y >= 1; y--) // filas de 8 a 1
             {
                 for (int x = 1; x <= 8; x++) // columnas de 1 a 8
@@ -21,9 +22,12 @@ namespace Ajedrez
                     Casillero casillero = new Casillero();
                     casillero.X = x;
                     casillero.Y = y;
-                    casillero.Ancho = 60;
+                    casillero.Ancho = ancho;
                     casillero.Pieza = SetPieza(x, y);
                     casillero.ColorFondo = ((x + y) % 2 == 0) ? Color.Beige : Color.SaddleBrown;
+
+                    casilleros[x, y] = casillero;
+                    Console.WriteLine(casillero.ToString());
 
                     this.EnviarCasillero(casillero);
                 }
@@ -68,6 +72,14 @@ namespace Ajedrez
             }
 
             return null; // casilla vacía
+        }
+
+        public Casillero GetCasillero(int x, int y)
+        {
+            if (x <= 0 || x > 8 || y <= 0 || y > 8)
+                throw new ArgumentOutOfRangeException("Coordenadas fuera del rango del tablero.");
+
+            return casilleros[x, y];
         }
     }
 }

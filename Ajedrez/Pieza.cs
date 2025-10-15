@@ -8,7 +8,7 @@ namespace Ajedrez
     public abstract class Pieza: ICloneable
     {
         public string Imagen { get; set; }
-
+        public char Nombre { get; set; }
         public ColorPieza Color { get; }
 
         protected Pieza(ColorPieza color)
@@ -22,9 +22,6 @@ namespace Ajedrez
             //toma todos los datos y crea un objeto del mismo tipo con los mismos valores
         }
 
-        public void Mover()
-        {
-            throw new System.NotImplementedException();
-        }
+        public abstract bool PuedeMover(Tablero tablero, Casillero origen, Casillero destino);
     }
 }

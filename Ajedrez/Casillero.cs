@@ -30,5 +30,11 @@ namespace Ajedrez
             hashCode = hashCode * -1521134295 + Y.GetHashCode();
             return hashCode;
         }
+        public override string ToString()
+        {
+            char pieza = Pieza != null ? Pieza.Nombre : ' ';
+            char letraColumna = (char)('a' + (X-1));
+            return $"{pieza}{letraColumna}{Y}";
+        }
     }
 }

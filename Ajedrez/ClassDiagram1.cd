@@ -3,26 +3,26 @@
   <Class Name="Ajedrez.Tablero">
     <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAACCAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAEACAAAA=</HashCode>
       <FileName>Tablero.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ajedrez.Juego">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AABAAAAAAAAEAAAAAAAAAAAAAAAAAgAAAAAQAAAAAAQ=</HashCode>
+      <HashCode>AABAAAAAAAAEACAAAAAAAACAAAAAAgAAAAAQAAAAAAQ=</HashCode>
       <FileName>Juego.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ajedrez.Casillero">
     <Position X="0.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAYAA=</HashCode>
+      <HashCode>AAAAAAECAAAAAAAggAAAAAAAAAAAAIEAAAAAAAAAYAA=</HashCode>
       <FileName>Casillero.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ajedrez.Pieza">
-    <Position X="5.5" Y="3" Width="1.5" />
+    <Position X="5.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAgAAAABA=</HashCode>
       <FileName>Pieza.cs</FileName>
@@ -30,7 +30,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Ajedrez.Peon">
-    <Position X="1.25" Y="6" Width="1.5" />
+    <Position X="12" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Peon.cs</FileName>
@@ -81,12 +81,12 @@
   <Enum Name="Ajedrez.ColorPieza">
     <Position X="8" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAACAAAAA=</HashCode>
       <FileName>ColorPieza.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Delegate Name="Ajedrez.DelEnviarCasillero">
-    <Position X="2.25" Y="3.5" Width="1.5" />
+    <Position X="3.25" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DelEnviarCasillero.cs</FileName>
