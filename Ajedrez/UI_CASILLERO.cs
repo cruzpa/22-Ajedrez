@@ -60,9 +60,11 @@ namespace Ajedrez
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            
-            Console.WriteLine($"seleccione el casiilero: {Casillero.X},{Casillero.Y}");
-            
+            if(Casillero.Seleccionado)
+            {
+                Console.WriteLine($"deseleccione el casiilero: {Casillero.X},{Casillero.Y}");
+                Casillero.Seleccionado = false;
+            }
             this.EnviarCasillero(Casillero);
             SetearImagen();
         }

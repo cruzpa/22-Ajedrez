@@ -20,6 +20,9 @@ namespace Ajedrez
         public Menu()
         {
             InitializeComponent();
+
+            this.ClientSize = new Size(100, 100);
+            this.MinimumSize = new Size(100, 100);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -68,7 +71,6 @@ namespace Ajedrez
 
         private void Menu_Load(object sender, EventArgs e)
         {
-            pictureBox1.Image = Image.FromFile("img\\wk.png");
         }
     }
 }
