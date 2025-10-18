@@ -17,6 +17,7 @@ namespace Ajedrez
         public Mesa()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.ClientSize = new Size(600, 600);
             this.MinimumSize = new Size(600, 600);
             tablero = new Tablero();

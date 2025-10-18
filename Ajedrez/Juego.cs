@@ -9,7 +9,6 @@ namespace Ajedrez
     {
 
         public Tablero tablero;
-        public Tablero tableroAux;
 
         public Jugador Blancas;
         public Jugador Negras;
@@ -18,7 +17,8 @@ namespace Ajedrez
 
         public Casillero casilleroPrevio = null;
 
-        public Juego(Tablero tablero) {
+        public Juego(Tablero tablero)
+        {
             this.tablero = tablero;
         }
         public Juego(Jugador blancas, Jugador negras)
@@ -34,7 +34,7 @@ namespace Ajedrez
             //deselecciono
             if (casilleroPrevio != null && casilleroPrevio.Equals(casillero))
             {
-                casilleroPrevio = null; 
+                casilleroPrevio = null;
                 return;
             }
 
@@ -56,7 +56,11 @@ namespace Ajedrez
                     casilleroPrevio.Pieza = null;
                     casilleroPrevio.Seleccionado = false;
 
-                    //ActivarEnPassantSiCorresponde(casillero);
+                    RemoverPiezaPorEnPassantSiCorresponde(casillero);
+                    DesactivarEnPassant();
+                    ActivarEnPassantSiCorresponde(casillero);
+                    CoronacionSiCorresponde(casillero);
+
                     casilleroPrevio = null;
 
 
@@ -75,16 +79,59 @@ namespace Ajedrez
 
         }
 
+        private void RemoverPiezaPorEnPassantSiCorresponde(Casillero casillero)
+        {
+            if (casillero.Pieza is Peon movedPeon)
+            {
+                int dx = casillero.X - casilleroPrevio.X;
+                int dy = casillero.Y - casilleroPrevio.Y;
+                int dir = (movedPeon.Color == ColorPieza.Blanco) ? 1 : -1;
+
+                // movimiento diagonal de captura (dx == ±1) y desplazamiento vertical correcto (dy == dir)
+                if (Math.Abs(dx) == 1 && dy == dir)
+                {
+                    // casillero donde quedaria el peon capturado por en passant
+                    var casilleroCapturado = tablero.GetCasillero(casillero.X, casilleroPrevio.Y);
+                    if (casilleroCapturado.Pieza is Peon rival && rival.Color != movedPeon.Color && rival.RecienMovidoDoble)
+                    {
+                        // eliminar el peon rival capturado por en passant
+                        casilleroCapturado.Pieza = null;
+                        Console.WriteLine($"En Passant: eliminado peón rival en {casilleroCapturado}");
+                    }
+                }
+            }
+        }
+
+        private static void CoronacionSiCorresponde(Casillero casillero)
+        {
+            // Coronacion: si la pieza movida es un peon y llego a la ultima fila del rival, se promociona a Reyna por defecto.
+            if (casillero.Pieza is Peon peon)
+            {
+                bool esFilaCoronacion = (peon.Color == ColorPieza.Blanco && casillero.Y == 8)
+                                       || (peon.Color == ColorPieza.Negro && casillero.Y == 1);
+                if (esFilaCoronacion)
+                {
+                    Console.WriteLine($"Coronación: Peón en {casillero} se promueve a Reyna.");
+                    casillero.Pieza = new Reyna(peon.Color);
+                }
+            }
+        }
+
         private void ActivarEnPassantSiCorresponde(Casillero casillero)
         {
+            Console.WriteLine("Verificando En Passant...");
             if (casillero.Pieza is Peon peon)
             {
                 peon.RecienMovidoDoble = Math.Abs(casillero.Y - casilleroPrevio.Y) == 2;
+                Console.WriteLine($"En Passant de casillero {casillero}: {peon.RecienMovidoDoble}");
+
             }
         }
 
         private void DesactivarEnPassant()
         {
+
+            Console.WriteLine("Desactivando En Passant...");
             for (int x = 1; x < 9; x++)
             {
                 for (int y = 1; y < 9; y++)
@@ -105,7 +152,7 @@ namespace Ajedrez
             if (destino.Pieza != null && destino.Pieza.Color == origen.Pieza.Color)
                 return false;
 
-            // Delegar la validación a la pieza
+            // Delegar la validacion a la pieza
             return origen.Pieza.PuedeMover(tablero, origen, destino);
         }
     }

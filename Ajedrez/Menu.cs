@@ -21,8 +21,9 @@ namespace Ajedrez
         {
             InitializeComponent();
 
-            this.ClientSize = new Size(100, 100);
-            this.MinimumSize = new Size(100, 100);
+            this.StartPosition = FormStartPosition.CenterScreen;
+            //this.ClientSize = new Size(100, 100);
+            //this.MinimumSize = new Size(100, 100);
         }
 
         private void button1_Click(object sender, EventArgs e)
