@@ -31,6 +31,12 @@ namespace Ajedrez
 
         public void CompararCasillero(Casillero casillero)
         {
+            //validar turno
+            if (casilleroPrevio == null && casillero.Pieza != null && !MovimientoEsTurnoValido(casillero))
+            {
+                return;
+            }
+
             //deselecciono
             if (casilleroPrevio != null && casilleroPrevio.Equals(casillero))
             {
@@ -38,7 +44,7 @@ namespace Ajedrez
                 return;
             }
 
-            //no comparo pq no tengo contra quien.
+            //selecciono pieza. No comparo pq no tengo contra quien.
             if (casilleroPrevio == null & casillero.Pieza != null)
             {
                 Console.WriteLine($"seleccionaste: {casillero}");
@@ -62,9 +68,10 @@ namespace Ajedrez
                     CoronacionSiCorresponde(casillero);
 
                     casilleroPrevio = null;
-
-
                     Console.WriteLine($"destino: {casillero}");
+                    
+                    //si movimiento valido -> pasar turno
+                    turno = (turno == Turno.Blancas) ? Turno.Negras : Turno.Blancas;
                 }
                 else
                 {
@@ -72,10 +79,6 @@ namespace Ajedrez
                 }
 
             }
-            //si movimiento valido -> pasar turno
-            //turno = (turno == Turno.Blancas) ? Turno.Negras : Turno.Blancas;
-
-
 
         }
 
@@ -145,15 +148,50 @@ namespace Ajedrez
 
         private bool esMovimientoValido(Tablero tablero, Casillero destino, Casillero origen)
         {
-            if (origen.Pieza == null)
-                return false;
-
+            // No permitir mover desde una casilla vacía
+            // Validación de turno: sólo se puede mover una pieza del color correspondiente al turno actual.
             // No permitir mover a una casilla ocupada por una pieza del mismo color
-            if (destino.Pieza != null && destino.Pieza.Color == origen.Pieza.Color)
-                return false;
-
-            // Delegar la validacion a la pieza
-            return origen.Pieza.PuedeMover(tablero, origen, destino);
+            // delegar a la pieza la validacion de movimiento.
+            return MovimientoHayPiezaEnElorigen(origen) 
+                //&& MovimientoEsTurnoValido (origen) 
+                && !MovimientoCasillaOcupadaPorMismoColor(origen, destino)
+                && origen.Pieza.PuedeMover(tablero, origen, destino);
         }
+
+        private bool MovimientoHayPiezaEnElorigen(Casillero origen)
+        {
+            if (origen.Pieza == null)
+            {
+                Console.WriteLine("Movimiento invalido: No hay pieza en el casillero origen.");
+                return false;
+            }
+            return true;
+        }
+
+        private bool MovimientoEsTurnoValido(Casillero origen)
+        {
+            if (turno == Turno.Blancas && origen.Pieza.Color != ColorPieza.Blanco)
+            {
+                Console.WriteLine($"Movimiento invalido: No es turno de las {Turno.Blancas}.");
+                return false;
+            }
+            if (turno == Turno.Negras && origen.Pieza.Color != ColorPieza.Negro)
+            {
+                Console.WriteLine($"Movimiento invalido: No es turno de las {Turno.Negras}.");
+                return false;
+            }
+            return true;
+        }
+
+        private bool MovimientoCasillaOcupadaPorMismoColor(Casillero origen, Casillero destino)
+        {
+            if (destino.Pieza != null && destino.Pieza.Color == origen.Pieza.Color)
+            {
+                Console.WriteLine($"Movimiento invalido: Hay una pieza tuya en ese casillero.");
+                return true;
+            }
+            return false;
+        }
+
     }
 }
