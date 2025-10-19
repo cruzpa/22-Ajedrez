@@ -81,5 +81,59 @@ namespace Ajedrez
 
             return casilleros[x, y];
         }
+
+
+        // Devuelve true si el rey del color indicado esta en jaque (alguna pieza rival puede moverse a su casillero)
+        public bool ReyEnJaque(ColorPieza color)
+        {
+            // Buscar la posicion del rey del color indicado
+            Casillero casilleroRey = ObtenerCasilleroRey(color);
+
+            // Recorrer todas las piezas rivales y verificar si alguna puede mover al casillero del rey
+            return RivalPuedeMoverAlRey(color, casilleroRey);
+        }
+
+        private bool RivalPuedeMoverAlRey(ColorPieza color, Casillero casilleroRey)
+        {
+            for (int x = 1; x <= 8; x++)
+            {
+                for (int y = 1; y <= 8; y++)
+                {
+                    var origen = casilleros[x, y];
+                    if (origen == null || origen.Pieza == null)
+                        continue;
+
+                    if (origen.Pieza.Color != color)
+                    {
+                        if (origen.Pieza.PuedeMover(this, origen, casilleroRey))
+                        {
+                            // Una pieza rival puede capturar al rey -> esta en jaque
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        private Casillero ObtenerCasilleroRey(ColorPieza color)
+        {
+            Casillero casilleroRey = null;
+            for (int x = 1; x <= 8 && casilleroRey == null; x++)
+            {
+                for (int y = 1; y <= 8; y++)
+                {
+                    var c = casilleros[x, y];
+                    if (c != null && c.Pieza is Rey rey && rey.Color == color)
+                    {
+                        casilleroRey = c;
+                        break;
+                    }
+                }
+            }
+
+            return casilleroRey;
+        }
     }
 }

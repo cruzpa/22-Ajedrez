@@ -44,6 +44,18 @@ namespace Ajedrez
                 return;
             }
 
+            // Validar si el rey está en jaque y solo permitir seleccionar el rey si es así
+            bool reyEnJaque = tablero.ReyEnJaque(turno == Turno.Blancas ? ColorPieza.Blanco : ColorPieza.Negro);
+            if (reyEnJaque && !(casilleroPrevio?.Pieza is Rey))
+            {
+                // Solo permitir seleccionar el rey del color correspondiente
+                if (!(casillero.Pieza is Rey) || casillero.Pieza.Color != (turno == Turno.Blancas ? ColorPieza.Blanco : ColorPieza.Negro))
+                {
+                    Console.WriteLine("Solo puedes seleccionar el rey porque estás en jaque.");
+                    return;
+                }
+            }
+
             //selecciono pieza. No comparo pq no tengo contra quien.
             if (casilleroPrevio == null & casillero.Pieza != null)
             {
