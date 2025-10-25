@@ -21,6 +21,10 @@ namespace Ajedrez
 
             if (Math.Abs(dx) != Math.Abs(dy))
                 return false; // Solo diagonal
+            if(dx == 0 || dy == 0)
+            {
+                return false; //no se puede mover a la misma fila o misma columna
+            }
 
             int stepX = dx / Math.Abs(dx);
             int stepY = dy / Math.Abs(dy);

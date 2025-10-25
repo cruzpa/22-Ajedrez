@@ -28,6 +28,7 @@ namespace Ajedrez
                 origen.Pieza = null;
 
                 // Verificar si el rey queda en jaque
+                Console.WriteLine("valido que el rey no quede en jaque en su proximo movimiento");
                 bool enJaque = tablero.ReyEnJaque(this.Color);
 
                 // Revertir el movimiento simulado

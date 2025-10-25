@@ -13,7 +13,7 @@ namespace Ajedrez
             Imagen = color == ColorPieza.Blanco
             ? "img\\wp.png"
             : "img\\bp.png";
-            Nombre = ' ';
+            Nombre = 'P';
             RecienMovidoDoble = false;
         }
         public override bool PuedeMover(Tablero tablero, Casillero origen, Casillero destino)

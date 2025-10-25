@@ -22,8 +22,10 @@ namespace Ajedrez
             InitializeComponent();
 
             this.StartPosition = FormStartPosition.CenterScreen;
-            //this.ClientSize = new Size(100, 100);
-            //this.MinimumSize = new Size(100, 100);
+            this.ClientSize = new Size(100, 100);
+            this.MinimumSize = new Size(100, 100);
+            Mesa.ShowDialog();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
