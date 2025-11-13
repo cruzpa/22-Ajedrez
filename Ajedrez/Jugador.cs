@@ -15,6 +15,13 @@ namespace Ajedrez
 
         private Acceso Acceso = new Acceso();
 
+        public Jugador(){}
+        public Jugador(String Name, String Pass)
+        {
+            this.Name = Name;
+            this.Pass = Pass;
+        }
+
         public int Insertar()
         {
             Acceso.Abrir();
@@ -23,13 +30,37 @@ namespace Ajedrez
             {
                 Console.WriteLine("El jugador ya existe");
                 resultado = -2;
+                return resultado;
             }
-            else
+            
+            //en vez de manejar resultados, podria usar transacciones para hacer rollback automatico
+            int NuevoId = Acceso.LeerEscalar($"select isnull(max(id),0) + 1 from jugador");
+            resultado = Acceso.Escribir($"insert into jugador (id, name, pass) values ({NuevoId}, '{Name}', '{Pass}')");
+            if (resultado <= 0)
             {
-                int NuevoId = Acceso.LeerEscalar($"select isnull(max(id),0) + 1 from jugador");
-                resultado = Acceso.Escribir($"insert into jugador (id, name, pass) values ({NuevoId}, '{Name}', '{Pass}')");
+                Console.WriteLine("Error al insertar jugador");
+                return -1;
             }
+
+            resultado = Acceso.Escribir($"insert into jugador_historial (id, win, tie, loss, time_played_seconds) values ({NuevoId}, 0, 0, 0, 0)");
+            if (resultado <= 0)
+            {
+                try
+                {
+                    Acceso.Escribir($"delete from jugador where id = {NuevoId}");
+                }
+                catch
+                {
+                    Console.WriteLine("Fallo al insertar historial y al intentar revertir la inserción del jugador.");
+                }
+
+                Console.WriteLine("Error al insertar historial. Se revierte la inserción.");
+                return -1;
+            }
+
+            
             Acceso.Cerrar();
+            this.Id = NuevoId;
             return resultado;
         }
 
@@ -66,5 +97,6 @@ namespace Ajedrez
 
             return jugador;
         }
+
     }
 }

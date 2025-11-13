@@ -15,16 +15,16 @@ namespace Ajedrez
     {
         public Jugador jugadorBlancas;
         public Jugador jugadorNegras;
-        public Mesa Mesa = new Mesa();
+        //public Mesa Mesa = new Mesa();
 
         public Menu()
         {
             InitializeComponent();
 
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.ClientSize = new Size(100, 100);
-            this.MinimumSize = new Size(100, 100);
-            Mesa.ShowDialog();
+            //this.StartPosition = FormStartPosition.CenterScreen;
+            //this.ClientSize = new Size(100, 100);
+            //this.MinimumSize = new Size(100, 100);
+            //Mesa.ShowDialog();
 
         }
 
@@ -69,7 +69,7 @@ namespace Ajedrez
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Mesa.ShowDialog();
+            //Mesa.ShowDialog();
         }
 
         private void Menu_Load(object sender, EventArgs e)

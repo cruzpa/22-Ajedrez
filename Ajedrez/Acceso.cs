@@ -68,7 +68,7 @@ namespace WindowsFormsApp1
         public bool ExisteJugadorByName(String name)
         {
             SqlCommand cmd = CrearComando($"select id from jugador where name='{name}'");
-            return cmd.ExecuteScalar().ToString() != null;
+            return cmd.ExecuteScalar() != null;
         }
 
     }
