@@ -17,7 +17,6 @@ namespace Ajedrez
 
             if (jugador != null)
             {
-                MessageBox.Show("Jugador logueado correctamente");
                 OnLoginSuccess?.Invoke(jugador);
             }
             else
@@ -45,7 +44,6 @@ namespace Ajedrez
 
             if (jugador != null)
             {
-                MessageBox.Show("Jugador creado y logueado correctamente");
                 OnLoginSuccess?.Invoke(jugador);
             }
             else
@@ -59,9 +57,11 @@ namespace Ajedrez
             if (!isEmpty(username) && !isEmpty(password))
             {
                 Jugador jugador = new Jugador(username, password);
-                jugador.Insertar();
-                return jugador;
-
+                int resultado = jugador.Insertar();
+                if (resultado >= 0 )
+                {
+                    return jugador;
+                }
             }
             return null;
         }
