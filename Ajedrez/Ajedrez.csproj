@@ -53,6 +53,7 @@
     <Compile Include="ColorPieza.cs" />
     <Compile Include="DelEnviarCasillero.cs" />
     <Compile Include="Juego.cs" />
+    <Compile Include="JugadorHistorial.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>

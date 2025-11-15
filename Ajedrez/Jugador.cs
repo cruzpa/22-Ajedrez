@@ -12,6 +12,7 @@ namespace Ajedrez
         public int Id { get; set; }
         public string Name { get; set; }
         public string Pass { get; set; }
+        public JugadorHistorial Historial { get; set; }
 
         private Acceso Acceso = new Acceso();
 
@@ -61,6 +62,17 @@ namespace Ajedrez
             
             Acceso.Cerrar();
             this.Id = NuevoId;
+            
+            // Inicializar el objeto Historial con valores por defecto
+            this.Historial = new JugadorHistorial
+            {
+                Id = NuevoId,
+                Win = 0,
+                Tie = 0,
+                Loss = 0,
+                TimePlayedSeconds = 0
+            };
+            
             return resultado;
         }
 
@@ -76,7 +88,7 @@ namespace Ajedrez
                 return null;
             }
              
-            SqlDataReader reader = Acceso.Leer($"select id, name, pass from jugador where name='{name}' and pass='{pass}'");
+            SqlDataReader reader = Acceso.Leer($"select j.id, j.name, j.pass, jh.win, jh.tie, jh.loss, jh.time_played_seconds from jugador j inner join jugador_historial jh on j.id = jh.id where j.name='{name}' and j.pass='{pass}'");
             while (reader.Read())
             {
                 jugador = new Jugador();
@@ -85,6 +97,16 @@ namespace Ajedrez
                 jugador.Id = id;
                 jugador.Name = name;
                 jugador.Pass = pass;
+
+                // Crear y asignar el objeto JugadorHistorial
+                jugador.Historial = new JugadorHistorial
+                {
+                    Id = id,
+                    Win = int.Parse(reader["win"].ToString()),
+                    Tie = int.Parse(reader["tie"].ToString()),
+                    Loss = int.Parse(reader["loss"].ToString()),
+                    TimePlayedSeconds = int.Parse(reader["time_played_seconds"].ToString())
+                };
             }
             reader.Close();
             Acceso.Cerrar();
