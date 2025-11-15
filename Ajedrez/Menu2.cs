@@ -87,7 +87,7 @@ namespace Ajedrez
             
             // Recrear UI_LOGIN1
             uI_LOGIN1 = new UI_LOGIN();
-            uI_LOGIN1.Location = new System.Drawing.Point(27, 34);
+            uI_LOGIN1.Location = new System.Drawing.Point(25, 40);
             uI_LOGIN1.Size = new System.Drawing.Size(252, 381);
             uI_LOGIN1.OnLoginSuccess += LoginBlancasCompletado;
             this.Controls.Add(uI_LOGIN1);

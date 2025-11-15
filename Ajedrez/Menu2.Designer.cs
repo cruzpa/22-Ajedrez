@@ -34,14 +34,14 @@
             // 
             // uI_LOGIN2
             // 
-            this.uI_LOGIN2.Location = new System.Drawing.Point(480, 40);
+            this.uI_LOGIN2.Location = new System.Drawing.Point(481, 40);
             this.uI_LOGIN2.Name = "uI_LOGIN2";
             this.uI_LOGIN2.Size = new System.Drawing.Size(226, 374);
             this.uI_LOGIN2.TabIndex = 1;
             // 
             // uI_LOGIN1
             // 
-            this.uI_LOGIN1.Location = new System.Drawing.Point(27, 34);
+            this.uI_LOGIN1.Location = new System.Drawing.Point(25, 40);
             this.uI_LOGIN1.Name = "uI_LOGIN1";
             this.uI_LOGIN1.Size = new System.Drawing.Size(252, 381);
             this.uI_LOGIN1.TabIndex = 0;
