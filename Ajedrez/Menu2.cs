@@ -119,6 +119,7 @@ namespace Ajedrez
             {
                 Console.WriteLine("Ambos jugadores están listos");
                 button1.Enabled = true;
+                button1.Select();
             }
             else
             {
@@ -144,8 +145,17 @@ namespace Ajedrez
             Mesa mesa = new Mesa(jugadorBlancas, jugadorNegras);
             this.Hide();
 
-            mesa.ShowDialog();
-            this.Show();
+            DialogResult resultado = mesa.ShowDialog();
+            
+            // Si se recibió Cancel (salir), cerrar la aplicación
+            if (resultado == DialogResult.Cancel)
+            {
+                Application.Exit();
+            }
+            else
+            {
+                this.Show();
+            }
         }
     }
 }

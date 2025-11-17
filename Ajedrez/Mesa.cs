@@ -34,8 +34,6 @@ namespace Ajedrez
             tablero = juego.tablero;
             
             juego.FinPartida += Juego_FinPartida;
-            
-            
             tablero.EnviarCasillero += Tablero_EnviarCasillero;
         }
 
@@ -124,27 +122,27 @@ namespace Ajedrez
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
+            else if (resultado == DialogResult.Cancel)
+            {
+                this.DialogResult = DialogResult.Cancel;
+                this.Close();
+            }
         }
         
         private void ReiniciarPartida()
         {
-            // Limpiar controles del tablero
-            foreach (Control control in this.Controls)
-            {
-                if (control is UI_CASILLERO)
-                {
-                    this.Controls.Remove(control);
-                    control.Dispose();
-                }
-            }
-            juego = new Juego(JugadorBlancas, JugadorNegras);
-            tablero = juego.tablero;
+            // Ocultar la mesa actual
+            this.Hide();
             
-            tablero.EnviarCasillero += Tablero_EnviarCasillero;
-            juego.FinPartida += Juego_FinPartida;
+            // Crear nueva mesa con los mismos jugadores
+            Mesa nuevaMesa = new Mesa(JugadorBlancas, JugadorNegras);
             
-            partidaIniciada = false;
-            tablero.InicializarTablero();
+            // Mostrar la nueva mesa
+            nuevaMesa.ShowDialog();
+            
+            // Cuando la nueva mesa se cierre, cerrar también esta
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         private void Mesa_Shown(object sender, EventArgs e)

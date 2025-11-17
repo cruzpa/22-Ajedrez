@@ -90,17 +90,17 @@ namespace Ajedrez
                     
                     //mover pieza
                     casillero.Pieza = casilleroPrevio.Pieza;
-                
-                    //limpio pieza previa
-                    casilleroPrevio.Pieza = null;
-                    casilleroPrevio.Seleccionado = false;
-                    casilleroPrevio = null;
 
                     //remover pieza por en passant (no puedo hacerlo como removia ya que no es ni origen ni destino)
                     RemoverPiezaPorEnPassantSiCorresponde(casillero);
                     DesactivarEnPassant();
                     ActivarEnPassantSiCorresponde(casillero);
                     CoronacionSiCorresponde(casillero);
+
+                    //limpio pieza previa
+                    casilleroPrevio.Pieza = null;
+                    casilleroPrevio.Seleccionado = false;
+                    casilleroPrevio = null;
 
                     Console.WriteLine($"Movimiento completado: {piezaMovida.Nombre} de {origenStr} a {destinoStr}");
                     //todo: aca escribir lista de movimientos.

@@ -14,6 +14,15 @@ namespace Ajedrez
 
         public void InicializarTablero()
         {
+            // Limpiar el array (revancha)
+            for (int x = 1; x <= 8; x++)
+            {
+                for (int y = 1; y <= 8; y++)
+                {
+                    casilleros[x, y] = null;
+                }
+            }
+
             int ancho = 60;
             for (int y = 8; y >= 1; y--) // filas de 8 a 1
             {
@@ -25,6 +34,7 @@ namespace Ajedrez
                     casillero.Ancho = ancho;
                     casillero.Pieza = SetPieza(x, y);
                     casillero.ColorFondo = ((x + y) % 2 == 0) ? Color.Beige : Color.SaddleBrown;
+                    casillero.Seleccionado = false;
 
                     casilleros[x, y] = casillero;
 

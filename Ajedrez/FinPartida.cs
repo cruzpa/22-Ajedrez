@@ -64,7 +64,7 @@ namespace Ajedrez
         private void buttonSalir_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
-            Application.Exit();
+            this.Close();
         }
     }
 }
