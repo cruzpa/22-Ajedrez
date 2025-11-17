@@ -18,6 +18,17 @@ namespace Ajedrez
         {
             InitializeComponent();
             this.jugador = jugador;
+            ActualizarLabels();
+        }
+
+        public void ActualizarJugador(Jugador jugadorActualizado)
+        {
+            this.jugador = jugadorActualizado;
+            ActualizarLabels();
+        }
+
+        private void ActualizarLabels()
+        {
 
             label1.Text = $"Jugador: {jugador.Name}";
             

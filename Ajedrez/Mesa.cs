@@ -83,11 +83,12 @@ namespace Ajedrez
         {
 
             TimeSpan tiempoJugado = DateTime.Now - tiempoInicio;
-            
+            int tiempoJugadoSegundos = (int)tiempoJugado.TotalSeconds;
+
             // Determinar ganador y perdedor
             Jugador ganador = null;
             Jugador perdedor = null;
-            
+
             if (!esEmpate)
             {
                 if (colorGanador == ColorPieza.Blanco)
@@ -101,7 +102,8 @@ namespace Ajedrez
                     perdedor = JugadorBlancas;
                 }
             }
-            
+
+            updateHistorial(esEmpate, tiempoJugadoSegundos, ganador, perdedor);
 
             FinPartida finPartida = new FinPartida();
             finPartida.JugadorGanador = ganador;
@@ -109,9 +111,9 @@ namespace Ajedrez
             finPartida.TiempoJugado = tiempoJugado;
             finPartida.EsEmpate = esEmpate;
             finPartida.MostrarResultado();
-            
+
             DialogResult resultado = finPartida.ShowDialog();
-            
+
             //procesar decision del usuario
             if (finPartida.RevanchaSolicitada)
             {
@@ -128,7 +130,21 @@ namespace Ajedrez
                 this.Close();
             }
         }
-        
+
+        private void updateHistorial(bool esEmpate, int tiempoJugadoSegundos, Jugador ganador, Jugador perdedor)
+        {
+            if (esEmpate)
+            {
+                JugadorBlancas.ActualizarHistorial(false, true, tiempoJugadoSegundos);
+                JugadorNegras.ActualizarHistorial(false, true, tiempoJugadoSegundos);
+            }
+            else
+            {
+                ganador.ActualizarHistorial(true, false, tiempoJugadoSegundos);
+                perdedor.ActualizarHistorial(false, false, tiempoJugadoSegundos);
+            }
+        }
+
         private void ReiniciarPartida()
         {
             // Ocultar la mesa actual

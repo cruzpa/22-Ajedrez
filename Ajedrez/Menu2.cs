@@ -147,15 +147,34 @@ namespace Ajedrez
 
             DialogResult resultado = mesa.ShowDialog();
             
-            // Si se recibió Cancel (salir), cerrar la aplicación
+            // Si "salir" entonces cerrar la aplicacion
             if (resultado == DialogResult.Cancel)
             {
                 Application.Exit();
             }
             else
             {
+                RefrescarJugadoresLogueados();
                 this.Show();
             }
+        }
+
+        private void RefrescarJugadoresLogueados()
+        {
+            jugadorBlancas = ActualizarJugadorLogueado(jugadorBlancas, uI_LOGGED1);
+            jugadorNegras = ActualizarJugadorLogueado(jugadorNegras, uI_LOGGED2);
+        }
+
+        private Jugador ActualizarJugadorLogueado(Jugador jugador, UI_LOGGED control)
+        {
+            Jugador jugadorActualizado = Jugador.Leer(jugador.Name, jugador.Pass);
+            if (jugadorActualizado != null)
+            {
+                control.ActualizarJugador(jugadorActualizado);
+                return jugadorActualizado;
+            }
+
+            return jugador;
         }
     }
 }

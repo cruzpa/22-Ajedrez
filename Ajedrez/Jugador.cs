@@ -120,5 +120,53 @@ namespace Ajedrez
             return jugador;
         }
 
+        public void ActualizarHistorial(bool gano, bool empato, int tiempoJugadoSegundos)
+        {
+            Acceso.Abrir();
+            
+            string campoActualizar = "";
+            if (gano)
+            {
+                campoActualizar = "win = win + 1";
+            }
+            else if (empato)
+            {
+                campoActualizar = "tie = tie + 1";
+            }
+            else
+            {
+                campoActualizar = "loss = loss + 1";
+            }
+            
+            string sql = $"update jugador_historial set {campoActualizar}, time_played_seconds = time_played_seconds + {tiempoJugadoSegundos} where id = {Id}";
+            
+            int resultado = Acceso.Escribir(sql);
+            if (resultado > 0)
+            {
+                if (Historial != null)
+                {
+                    if (gano)
+                    {
+                        Historial.Win++;
+                    }
+                    else if (empato)
+                    {
+                        Historial.Tie++;
+                    }
+                    else
+                    {
+                        Historial.Loss++;
+                    }
+                    Historial.TimePlayedSeconds += tiempoJugadoSegundos;
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Error al actualizar historial del jugador {Name}");
+            }
+            
+            Acceso.Cerrar();
+        }
+
     }
 }
