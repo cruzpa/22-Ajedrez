@@ -52,6 +52,12 @@
     <Compile Include="Casillero.cs" />
     <Compile Include="ColorPieza.cs" />
     <Compile Include="DelEnviarCasillero.cs" />
+    <Compile Include="FinPartida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinPartida.Designer.cs">
+      <DependentUpon>FinPartida.cs</DependentUpon>
+    </Compile>
     <Compile Include="Juego.cs" />
     <Compile Include="JugadorHistorial.cs" />
     <Compile Include="Login.cs">
@@ -106,6 +112,9 @@
     <Compile Include="UI_LOGIN.Designer.cs">
       <DependentUpon>UI_LOGIN.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FinPartida.resx">
+      <DependentUpon>FinPartida.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>

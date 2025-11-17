@@ -27,7 +27,6 @@ namespace Ajedrez
                     casillero.ColorFondo = ((x + y) % 2 == 0) ? Color.Beige : Color.SaddleBrown;
 
                     casilleros[x, y] = casillero;
-                    Console.WriteLine(casillero.ToString());
 
                     this.EnviarCasillero(casillero);
                 }

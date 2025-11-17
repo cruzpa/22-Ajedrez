@@ -14,22 +14,35 @@ namespace Ajedrez
     {
         public Tablero tablero;
         public Juego juego;
-        public Mesa()
+        public Jugador JugadorBlancas { get; private set; }
+        public Jugador JugadorNegras { get; private set; }
+        
+        private DateTime tiempoInicio;
+        private bool partidaIniciada = false;
+        
+        public Mesa(Jugador jugadorBlancas, Jugador jugadorNegras)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             this.ClientSize = new Size(600, 600);
             this.MinimumSize = new Size(600, 600);
-            tablero = new Tablero();
-            juego = new Juego(tablero);
-
+            
+            this.JugadorBlancas = jugadorBlancas;
+            this.JugadorNegras = jugadorNegras;
+            
+            juego = new Juego(jugadorBlancas, jugadorNegras);
+            tablero = juego.tablero;
+            
+            juego.FinPartida += Juego_FinPartida;
+            
+            
             tablero.EnviarCasillero += Tablero_EnviarCasillero;
         }
 
         private void Tablero_EnviarCasillero(Casillero casillero)
         {
             int separacion = 0;
-            int totalFilas = 9; //para que quede centrado
+            int totalFilas = 9;
 
             UI_CASILLERO ui_casillero = new UI_CASILLERO();
             ui_casillero.Location = new Point(
@@ -45,6 +58,7 @@ namespace Ajedrez
 
         private void Cas_EnviarCasillero(Casillero casillero)
         {
+            comenzarTiempoSiPrimerMovimiento();
 
             juego.CompararCasillero(casillero);
 
@@ -56,6 +70,81 @@ namespace Ajedrez
                     ui_casillero.SetearImagen();
                 }
             }
+        }
+
+        private void comenzarTiempoSiPrimerMovimiento()
+        {
+            if (!partidaIniciada)
+            {
+                tiempoInicio = DateTime.Now;
+                partidaIniciada = true;
+            }
+        }
+
+        private void Juego_FinPartida(ColorPieza colorGanador, bool esEmpate)
+        {
+
+            TimeSpan tiempoJugado = DateTime.Now - tiempoInicio;
+            
+            // Determinar ganador y perdedor
+            Jugador ganador = null;
+            Jugador perdedor = null;
+            
+            if (!esEmpate)
+            {
+                if (colorGanador == ColorPieza.Blanco)
+                {
+                    ganador = JugadorBlancas;
+                    perdedor = JugadorNegras;
+                }
+                else
+                {
+                    ganador = JugadorNegras;
+                    perdedor = JugadorBlancas;
+                }
+            }
+            
+
+            FinPartida finPartida = new FinPartida();
+            finPartida.JugadorGanador = ganador;
+            finPartida.JugadorPerdedor = perdedor;
+            finPartida.TiempoJugado = tiempoJugado;
+            finPartida.EsEmpate = esEmpate;
+            finPartida.MostrarResultado();
+            
+            DialogResult resultado = finPartida.ShowDialog();
+            
+            //procesar decision del usuario
+            if (finPartida.RevanchaSolicitada)
+            {
+                ReiniciarPartida();
+            }
+            else if (finPartida.VolverAlMenu)
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+        }
+        
+        private void ReiniciarPartida()
+        {
+            // Limpiar controles del tablero
+            foreach (Control control in this.Controls)
+            {
+                if (control is UI_CASILLERO)
+                {
+                    this.Controls.Remove(control);
+                    control.Dispose();
+                }
+            }
+            juego = new Juego(JugadorBlancas, JugadorNegras);
+            tablero = juego.tablero;
+            
+            tablero.EnviarCasillero += Tablero_EnviarCasillero;
+            juego.FinPartida += Juego_FinPartida;
+            
+            partidaIniciada = false;
+            tablero.InicializarTablero();
         }
 
         private void Mesa_Shown(object sender, EventArgs e)

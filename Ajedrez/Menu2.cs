@@ -14,7 +14,6 @@ namespace Ajedrez
     {
         public Jugador jugadorBlancas;
         public Jugador jugadorNegras;
-        public Mesa Mesa = new Mesa();
         
         private UI_LOGGED uI_LOGGED1; // Para jugador Blancas
         private UI_LOGGED uI_LOGGED2; // Para jugador Negras
@@ -28,10 +27,7 @@ namespace Ajedrez
         
         private void ConfigurarLogins()
         {
-            // Configurar login para jugador Blancas (uI_LOGIN1)
             uI_LOGIN1.OnLoginSuccess += LoginBlancasCompletado;
-            
-            // Configurar login para jugador Negras (uI_LOGIN2)
             uI_LOGIN2.OnLoginSuccess += LoginNegrasCompletado;
         }
         
@@ -87,10 +83,12 @@ namespace Ajedrez
             
             // Recrear UI_LOGIN1
             uI_LOGIN1 = new UI_LOGIN();
-            uI_LOGIN1.Location = new System.Drawing.Point(25, 40);
+            uI_LOGIN1.Location = new System.Drawing.Point(27, 34);
             uI_LOGIN1.Size = new System.Drawing.Size(252, 381);
             uI_LOGIN1.OnLoginSuccess += LoginBlancasCompletado;
             this.Controls.Add(uI_LOGIN1);
+            
+            VerificarAmbosLogueados();
         }
         
         private void LogoutNegrasCompletado()
@@ -111,6 +109,8 @@ namespace Ajedrez
             uI_LOGIN2.Size = new System.Drawing.Size(226, 374);
             uI_LOGIN2.OnLoginSuccess += LoginNegrasCompletado;
             this.Controls.Add(uI_LOGIN2);
+            
+            VerificarAmbosLogueados();
         }
         
         private void VerificarAmbosLogueados()
@@ -118,12 +118,34 @@ namespace Ajedrez
             if (jugadorBlancas != null && jugadorNegras != null)
             {
                 Console.WriteLine("Ambos jugadores están listos");
+                button1.Enabled = true;
+            }
+            else
+            {
+                button1.Enabled = false;
             }
         }
 
         private void Menu2_Load(object sender, EventArgs e)
         {
+            // Inicializar el botón como deshabilitado
+            button1.Enabled = false;
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (jugadorBlancas == null || jugadorNegras == null)
+            {
+                MessageBox.Show("Ambos jugadores deben estar logueados para comenzar el juego.", 
+                    "Jugadores incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            Mesa mesa = new Mesa(jugadorBlancas, jugadorNegras);
+            this.Hide();
+
+            mesa.ShowDialog();
+            this.Show();
         }
     }
 }

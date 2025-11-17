@@ -30,6 +30,7 @@
         {
             this.uI_LOGIN2 = new Ajedrez.UI_LOGIN();
             this.uI_LOGIN1 = new Ajedrez.UI_LOGIN();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // uI_LOGIN2
@@ -46,11 +47,22 @@
             this.uI_LOGIN1.Size = new System.Drawing.Size(252, 381);
             this.uI_LOGIN1.TabIndex = 0;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(270, 297);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(225, 56);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Jugar!";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Menu2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.uI_LOGIN2);
             this.Controls.Add(this.uI_LOGIN1);
             this.Name = "Menu2";
@@ -64,5 +76,6 @@
 
         private UI_LOGIN uI_LOGIN1;
         private UI_LOGIN uI_LOGIN2;
+        private System.Windows.Forms.Button button1;
     }
 }

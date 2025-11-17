@@ -15,7 +15,6 @@ namespace Ajedrez
     {
         public Jugador jugadorBlancas;
         public Jugador jugadorNegras;
-        //public Mesa Mesa = new Mesa();
 
         public Menu()
         {
