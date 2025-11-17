@@ -47,6 +47,7 @@ namespace Ajedrez
             }
 
             jugadorBlancas = jugador;
+            Bitacora.RegistrarEvento(jugadorBlancas, Evento.LOGIN);
             
             // Guardar posición y tamaño antes de remover
             var location = uI_LOGIN1.Location;
@@ -72,7 +73,8 @@ namespace Ajedrez
             }
 
             jugadorNegras = jugador;
-            
+            Bitacora.RegistrarEvento(jugadorNegras, Evento.LOGIN);
+
             // Guardar posición y tamaño antes de remover
             var location = uI_LOGIN2.Location;
             var size = uI_LOGIN2.Size;
@@ -90,6 +92,7 @@ namespace Ajedrez
         
         private void LogoutBlancasCompletado()
         {
+            Bitacora.RegistrarEvento(jugadorBlancas, Evento.LOGOUT);
             jugadorBlancas = null;
             
             // Reemplazar UI_LOGGED1 con UI_LOGIN1
@@ -113,6 +116,7 @@ namespace Ajedrez
         
         private void LogoutNegrasCompletado()
         {
+            Bitacora.RegistrarEvento(jugadorNegras, Evento.LOGOUT);
             jugadorNegras = null;
             
             // Reemplazar UI_LOGGED2 con UI_LOGIN2

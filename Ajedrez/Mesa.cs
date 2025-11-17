@@ -19,6 +19,7 @@ namespace Ajedrez
         
         private DateTime tiempoInicio;
         private bool partidaIniciada = false;
+        private int IdPartida { get; set; }
         
         public Mesa(Jugador jugadorBlancas, Jugador jugadorNegras)
         {
@@ -29,12 +30,14 @@ namespace Ajedrez
             
             this.JugadorBlancas = jugadorBlancas;
             this.JugadorNegras = jugadorNegras;
-            
+
             juego = new Juego(jugadorBlancas, jugadorNegras);
             tablero = juego.tablero;
             
             juego.FinPartida += Juego_FinPartida;
             tablero.EnviarCasillero += Tablero_EnviarCasillero;
+
+            IdPartida = Bitacora.RegistrarInicioPartida(jugadorBlancas, jugadorNegras);
         }
 
         private void Tablero_EnviarCasillero(Casillero casillero)
@@ -79,7 +82,7 @@ namespace Ajedrez
             }
         }
 
-        private void Juego_FinPartida(ColorPieza colorGanador, bool esEmpate)
+        private void Juego_FinPartida(ColorPieza colorGanador, bool esEmpate, Jugador Blancas, Jugador Negras)
         {
 
             TimeSpan tiempoJugado = DateTime.Now - tiempoInicio;
@@ -104,6 +107,8 @@ namespace Ajedrez
             }
 
             updateHistorial(esEmpate, tiempoJugadoSegundos, ganador, perdedor);
+
+            Bitacora.RegistrarFinPartida(IdPartida, Blancas.Id, Negras.Id, ganador.Id, perdedor.Id, esEmpate, tiempoJugadoSegundos);
 
             FinPartida finPartida = new FinPartida();
             finPartida.JugadorGanador = ganador;

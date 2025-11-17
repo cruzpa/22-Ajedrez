@@ -48,10 +48,12 @@
   <ItemGroup>
     <Compile Include="Acceso.cs" />
     <Compile Include="Alfil.cs" />
+    <Compile Include="Bitacora.cs" />
     <Compile Include="Caballo.cs" />
     <Compile Include="Casillero.cs" />
     <Compile Include="ColorPieza.cs" />
     <Compile Include="DelEnviarCasillero.cs" />
+    <Compile Include="Evento.cs" />
     <Compile Include="FinPartida.cs">
       <SubType>Form</SubType>
     </Compile>

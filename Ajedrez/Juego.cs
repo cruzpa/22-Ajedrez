@@ -17,7 +17,7 @@ namespace Ajedrez
 
         public Casillero casilleroPrevio = null;
         
-        public event Action<ColorPieza, bool> FinPartida; // Color del ganador, bool esEmpate
+        public event Action<ColorPieza, bool, Jugador, Jugador> FinPartida; // Color del ganador, bool esEmpate
 
         public Juego(Tablero tablero)
         {
@@ -60,7 +60,7 @@ namespace Ajedrez
             //selecciono pieza. No comparo pq no tengo contra quien.
             if (casilleroPrevio == null && casillero.Pieza != null)
             {
-                Console.WriteLine($"seleccionaste: {casillero}");
+                //Console.WriteLine($"seleccionaste: {casillero}");
                 casillero.Seleccionado = true;
                 casilleroPrevio = casillero;
                 return;
@@ -75,7 +75,7 @@ namespace Ajedrez
             //muevo pieza validar 
             if (casilleroPrevio != null)
             {
-                Console.WriteLine($"Intentando mover: {casilleroPrevio.Pieza.Nombre} de {casilleroPrevio} a {casillero}");
+                //Console.WriteLine($"Intentando mover: {casilleroPrevio.Pieza.Nombre} de {casilleroPrevio} a {casillero}");
                 
                 if (esMovimientoValido(tablero, casillero, casilleroPrevio))
                 {
@@ -85,8 +85,8 @@ namespace Ajedrez
                     string origenStr = casilleroPrevio.ToString();
                     string destinoStr = casillero.ToString();
                     string infoCaptura = piezaCapturada != null ? $" (Capturando {piezaCapturada.Nombre})" : "";
-                    
-                    Console.WriteLine($"Movimiento valido: {infoCaptura}");
+                   
+                    Console.WriteLine($"Movimiento valido. {infoCaptura}");
                     
                     //mover pieza
                     casillero.Pieza = casilleroPrevio.Pieza;
@@ -107,7 +107,7 @@ namespace Ajedrez
 
                     //si movimiento valido -> pasar turno
                     turno = (turno == Turno.Blancas) ? Turno.Negras : Turno.Blancas;
-                    Console.WriteLine($"Ahora es turno de: {turno}");
+                    //Console.WriteLine($"Ahora es turno de: {turno}");
                     
                     // Verificar condiciones de victoria después del movimiento
                     VerificarCondicionesDeVictoria();
@@ -165,7 +165,7 @@ namespace Ajedrez
                 peon.RecienMovidoDoble = movioDoble;
                 if (movioDoble)
                 {
-                    Console.WriteLine($"En Passant activado: Peon {peon.Color} movio dos casillas desde {casilleroPrevio} a {casillero}");
+                    //Console.WriteLine($"En Passant activado: Peon {peon.Color} movio dos casillas desde {casilleroPrevio} a {casillero}");
                 }
             }
         }
@@ -364,14 +364,14 @@ namespace Ajedrez
                 Console.WriteLine($"JAQUE MATE! Las {ganador} ganan.");
                 
                 // notificar fin de partida
-                FinPartida?.Invoke(colorGanador, false);
+                FinPartida?.Invoke(colorGanador, false, Blancas, Negras);
             }
             else if (EsAhogado(colorJugadorActual))
             {
                 Console.WriteLine($"AHOGADO! La partida termina en empate.");
                 
                 //notificar fin de partida (empate)
-                FinPartida?.Invoke(ColorPieza.Blanco, true); // Color no importa en empate
+                FinPartida?.Invoke(ColorPieza.Blanco, true, Blancas, Negras); // Color no importa en empate
             }
         }
 
