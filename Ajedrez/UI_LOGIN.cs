@@ -11,6 +11,11 @@ namespace Ajedrez
             InitializeComponent();
         }
 
+        public void ConfigurarTitulo(string titulo)
+        {
+            label1.Text = titulo;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             var jugador = getJugador(textBox1.Text, textBox2.Text);

@@ -23,6 +23,13 @@ namespace Ajedrez
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             ConfigurarLogins();
+            ConfigurarTitulosLogin();
+        }
+
+        private void ConfigurarTitulosLogin()
+        {
+            uI_LOGIN1.ConfigurarTitulo("Jugador Blancas");
+            uI_LOGIN2.ConfigurarTitulo("Jugador Negras");
         }
         
         private void ConfigurarLogins()
@@ -33,6 +40,12 @@ namespace Ajedrez
         
         private void LoginBlancasCompletado(Jugador jugador)
         {
+            if (jugadorNegras != null && jugadorNegras.Id == jugador.Id)
+            {
+                MessageBox.Show("Este jugador ya esta logueado como Negras. Selecciona un jugador diferente.", "Jugador duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             jugadorBlancas = jugador;
             
             // Guardar posición y tamaño antes de remover
@@ -52,6 +65,12 @@ namespace Ajedrez
         
         private void LoginNegrasCompletado(Jugador jugador)
         {
+            if (jugadorBlancas != null && jugadorBlancas.Id == jugador.Id)
+            {
+                MessageBox.Show("Este jugador ya esta logueado como Blancas. Selecciona un jugador diferente.", "Jugador duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             jugadorNegras = jugador;
             
             // Guardar posición y tamaño antes de remover
@@ -85,6 +104,7 @@ namespace Ajedrez
             uI_LOGIN1 = new UI_LOGIN();
             uI_LOGIN1.Location = new System.Drawing.Point(27, 34);
             uI_LOGIN1.Size = new System.Drawing.Size(252, 381);
+            uI_LOGIN1.ConfigurarTitulo("Jugador Blancas");
             uI_LOGIN1.OnLoginSuccess += LoginBlancasCompletado;
             this.Controls.Add(uI_LOGIN1);
             
@@ -107,6 +127,7 @@ namespace Ajedrez
             uI_LOGIN2 = new UI_LOGIN();
             uI_LOGIN2.Location = new System.Drawing.Point(480, 40);
             uI_LOGIN2.Size = new System.Drawing.Size(226, 374);
+            uI_LOGIN2.ConfigurarTitulo("Jugador Negras");
             uI_LOGIN2.OnLoginSuccess += LoginNegrasCompletado;
             this.Controls.Add(uI_LOGIN2);
             
