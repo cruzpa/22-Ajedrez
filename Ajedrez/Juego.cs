@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
+using System.Xml;
 
 namespace Ajedrez
 {
@@ -17,6 +19,7 @@ namespace Ajedrez
 
         public Casillero casilleroPrevio = null;
         private int numeroMovimiento = 1;
+        private List<string> movimientos = new List<string>();
         
         public event Action<ColorPieza, bool, Jugador, Jugador> FinPartida; // Color del ganador, bool esEmpate
 
@@ -154,7 +157,9 @@ namespace Ajedrez
                 movimiento.Append('+');
             }
 
-            Console.WriteLine($"{numeroMovimiento}. {movimiento}");
+            var movimientoStr = $"{numeroMovimiento}. {movimiento}";
+            Console.WriteLine(movimientoStr);
+            movimientos.Add(movimientoStr);
             numeroMovimiento++;
         }
 
@@ -412,7 +417,7 @@ namespace Ajedrez
                 string ganador = (turno == Turno.Blancas) ? "Negras" : "Blancas";
                 ColorPieza colorGanador = (turno == Turno.Blancas) ? ColorPieza.Negro : ColorPieza.Blanco;
                 Console.WriteLine($"JAQUE MATE! Las {ganador} ganan.");
-                
+
                 // notificar fin de partida
                 FinPartida?.Invoke(colorGanador, false, Blancas, Negras);
             }
