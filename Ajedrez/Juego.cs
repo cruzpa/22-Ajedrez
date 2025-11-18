@@ -16,6 +16,7 @@ namespace Ajedrez
         public Turno turno;
 
         public Casillero casilleroPrevio = null;
+        private int numeroMovimiento = 1;
         
         public event Action<ColorPieza, bool, Jugador, Jugador> FinPartida; // Color del ganador, bool esEmpate
 
@@ -39,13 +40,13 @@ namespace Ajedrez
 
             if (tablero.ReyEnJaque(colorTurnoActual))
             {
-                Console.WriteLine($" El rey {turno} esta en JAQUE");
+                //Console.WriteLine($" El rey {turno} esta en JAQUE");
             }
 
             //validar turno
             if (casilleroPrevio == null && casillero.Pieza != null && !MovimientoEsTurnoValido(casillero))
             {
-                Console.WriteLine("No es el turno de esta pieza");
+                //Console.WriteLine("No es el turno de esta pieza");
                 return;
             }
 
@@ -79,15 +80,19 @@ namespace Ajedrez
                 
                 if (esMovimientoValido(tablero, casillero, casilleroPrevio))
                 {
-                    // Guardar información antes de mover
-                    Pieza piezaMovida = casilleroPrevio.Pieza;
-                    Pieza piezaCapturada = casillero.Pieza;
-                    string origenStr = casilleroPrevio.ToString();
-                    string destinoStr = casillero.ToString();
-                    string infoCaptura = piezaCapturada != null ? $" (Capturando {piezaCapturada.Nombre})" : "";
-                   
-                    Console.WriteLine($"Movimiento valido. {infoCaptura}");
-                    
+                    Casillero origenMovimiento = new Casillero
+                    {
+                        X = casilleroPrevio.X,
+                        Y = casilleroPrevio.Y,
+                        Pieza = casilleroPrevio.Pieza
+                    };
+                    Casillero destinoMovimiento = new Casillero
+                    {
+                        X = casillero.X,
+                        Y = casillero.Y,
+                        Pieza = casillero.Pieza
+                    };
+
                     //mover pieza
                     casillero.Pieza = casilleroPrevio.Pieza;
 
@@ -102,8 +107,10 @@ namespace Ajedrez
                     casilleroPrevio.Seleccionado = false;
                     casilleroPrevio = null;
 
-                    Console.WriteLine($"Movimiento completado: {piezaMovida.Nombre} de {origenStr} a {destinoStr}");
-                    //todo: aca escribir lista de movimientos.
+                    ColorPieza colorRival = (turno == Turno.Blancas) ? ColorPieza.Negro : ColorPieza.Blanco;
+                    bool esJaque = tablero.ReyEnJaque(colorRival);
+                    bool esJaqueMate = esJaque && !TieneMovimientosLegales(colorRival);
+                    RegistrarMovimiento(origenMovimiento, destinoMovimiento, esJaque, esJaqueMate);
 
                     //si movimiento valido -> pasar turno
                     turno = (turno == Turno.Blancas) ? Turno.Negras : Turno.Blancas;
@@ -114,9 +121,52 @@ namespace Ajedrez
                 }
                 else
                 {
-                    Console.WriteLine($"movimiento invalido: {casilleroPrevio} a {casillero}");
+                    //Console.WriteLine($"movimiento invalido: {casilleroPrevio} a {casillero}");
                 }
             }
+        }
+
+        private void RegistrarMovimiento(Casillero casilleroOrigen, Casillero casilleroDestino, bool esJaque, bool esJaqueMate)
+        {
+
+            bool huboCaptura = casilleroDestino.Pieza != null;
+            StringBuilder movimiento = new StringBuilder();
+            movimiento.Append(casilleroOrigen.Pieza.Nombre);
+
+            if (huboCaptura && casilleroOrigen.Pieza is Peon)
+            {
+                movimiento.Append(ObtenerColumna(casilleroOrigen.X));
+            }
+
+            if (huboCaptura)
+            {
+                movimiento.Append('x');
+            }
+
+            movimiento.Append(ObtenerCoordenada(casilleroDestino));
+
+            if (esJaqueMate)
+            {
+                movimiento.Append('#');
+            }
+            else if (esJaque)
+            {
+                movimiento.Append('+');
+            }
+
+            Console.WriteLine($"{numeroMovimiento}. {movimiento}");
+            numeroMovimiento++;
+        }
+
+        private static string ObtenerCoordenada(Casillero casillero)
+        {
+            char columna = ObtenerColumna(casillero.X);
+            return $"{columna}{casillero.Y}";
+        }
+
+        private static char ObtenerColumna(int x)
+        {
+            return (char)('a' + (x - 1));
         }
 
         private void RemoverPiezaPorEnPassantSiCorresponde(Casillero casillero)
@@ -136,7 +186,7 @@ namespace Ajedrez
                     {
                         // eliminar el peon rival capturado por en passant
                         casilleroCapturado.Pieza = null;
-                        Console.WriteLine($"En Passant: eliminado peón rival en {casilleroCapturado}");
+                        //Console.WriteLine($"En Passant: eliminado peón rival en {casilleroCapturado}");
                     }
                 }
             }
@@ -151,7 +201,7 @@ namespace Ajedrez
                                        || (peon.Color == ColorPieza.Negro && casillero.Y == 1);
                 if (esFilaCoronacion)
                 {
-                    Console.WriteLine($"Coronacion: Peon en {casillero} se promueve a Reyna.");
+                    //Console.WriteLine($"Coronacion: Peon en {casillero} se promueve a Reyna.");
                     casillero.Pieza = new Reyna(peon.Color);
                 }
             }
@@ -244,7 +294,7 @@ namespace Ajedrez
         {
             if (origen.Pieza == null)
             {
-                Console.WriteLine("Movimiento invalido: No hay pieza en el casillero origen.");
+                //Console.WriteLine("Movimiento invalido: No hay pieza en el casillero origen.");
                 return false;
             }
             return true;
@@ -254,12 +304,12 @@ namespace Ajedrez
         {
             if (turno == Turno.Blancas && origen.Pieza.Color != ColorPieza.Blanco)
             {
-                Console.WriteLine($"Movimiento invalido: No es turno de las {Turno.Blancas}.");
+                //Console.WriteLine($"Movimiento invalido: No es turno de las {Turno.Blancas}.");
                 return false;
             }
             if (turno == Turno.Negras && origen.Pieza.Color != ColorPieza.Negro)
             {
-                Console.WriteLine($"Movimiento invalido: No es turno de las {Turno.Negras}.");
+                //Console.WriteLine($"Movimiento invalido: No es turno de las {Turno.Negras}.");
                 return false;
             }
             return true;
@@ -269,7 +319,7 @@ namespace Ajedrez
         {
             if (destino.Pieza != null && destino.Pieza.Color == origen.Pieza.Color)
             {
-                Console.WriteLine($"Movimiento invalido: Hay una pieza tuya en ese casillero.");
+                //Console.WriteLine($"Movimiento invalido: Hay una pieza tuya en ese casillero.");
                 return true;
             }
             return false;

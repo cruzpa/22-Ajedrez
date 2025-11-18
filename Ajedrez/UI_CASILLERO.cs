@@ -62,7 +62,7 @@ namespace Ajedrez
         {
             if(Casillero.Seleccionado)
             {
-                Console.WriteLine($"deseleccione el casiilero: {Casillero}");
+                //Console.WriteLine($"deseleccione el casiilero: {Casillero}");
                 Casillero.Seleccionado = false;
             }
             this.EnviarCasillero(Casillero);
