@@ -1,6 +1,6 @@
 ﻿namespace Ajedrez
 {
-    partial class Menu2
+    partial class Menu
     {
         /// <summary>
         /// Required designer variable.

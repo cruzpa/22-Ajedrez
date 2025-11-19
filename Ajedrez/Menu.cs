@@ -1,24 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BE;
+using BLL;
+using System;
 using System.Windows.Forms;
 
 namespace Ajedrez
 {
-    public partial class Menu2 : Form
+    public partial class Menu : Form
     {
         public Jugador jugadorBlancas;
         public Jugador jugadorNegras;
         
         private UI_LOGGED uI_LOGGED1; // Para jugador Blancas
         private UI_LOGGED uI_LOGGED2; // Para jugador Negras
-        
-        public Menu2()
+
+
+        public JugadorBLL jugadorBLL = new JugadorBLL();
+
+        public Menu()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -47,8 +45,7 @@ namespace Ajedrez
             }
 
             jugadorBlancas = jugador;
-            Bitacora.RegistrarEvento(jugadorBlancas, Evento.LOGIN);
-            
+            Bitacora.RegistrarEventoSesion(jugadorBlancas, EventType.LOGIN);            
             // Guardar posición y tamaño antes de remover
             var location = uI_LOGIN1.Location;
             var size = uI_LOGIN1.Size;
@@ -73,7 +70,7 @@ namespace Ajedrez
             }
 
             jugadorNegras = jugador;
-            Bitacora.RegistrarEvento(jugadorNegras, Evento.LOGIN);
+            Bitacora.RegistrarEventoSesion(jugadorNegras, EventType.LOGIN);
 
             // Guardar posición y tamaño antes de remover
             var location = uI_LOGIN2.Location;
@@ -92,7 +89,7 @@ namespace Ajedrez
         
         private void LogoutBlancasCompletado()
         {
-            Bitacora.RegistrarEvento(jugadorBlancas, Evento.LOGOUT);
+            Bitacora.RegistrarEventoSesion(jugadorBlancas, EventType.LOGOUT);
             jugadorBlancas = null;
             
             // Reemplazar UI_LOGGED1 con UI_LOGIN1
@@ -116,7 +113,7 @@ namespace Ajedrez
         
         private void LogoutNegrasCompletado()
         {
-            Bitacora.RegistrarEvento(jugadorNegras, Evento.LOGOUT);
+            Bitacora.RegistrarEventoSesion(jugadorNegras, EventType.LOGOUT);
             jugadorNegras = null;
             
             // Reemplazar UI_LOGGED2 con UI_LOGIN2
@@ -192,13 +189,12 @@ namespace Ajedrez
 
         private Jugador ActualizarJugadorLogueado(Jugador jugador, UI_LOGGED control)
         {
-            Jugador jugadorActualizado = Jugador.Leer(jugador.Name, jugador.Pass);
+            Jugador jugadorActualizado = jugadorBLL.Leer(jugador);
             if (jugadorActualizado != null)
             {
                 control.ActualizarJugador(jugadorActualizado);
                 return jugadorActualizado;
             }
-
             return jugador;
         }
     }

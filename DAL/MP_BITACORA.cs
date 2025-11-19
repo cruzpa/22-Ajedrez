@@ -1,14 +1,16 @@
+﻿using BE;
 using System;
-using WindowsFormsApp1;
 
-namespace Ajedrez
+namespace DAL
 {
-    public static class Bitacora
+    public class MP_BITACORA
+
     {
-        public static void RegistrarEvento(Jugador jugador, Evento evento)
+        public static int RegistrarEventoSesion(Jugador jugador, EventType evento)
         {
 
             var acceso = new Acceso();
+            int resultado;
             try
             {
                 acceso.Abrir();
@@ -17,21 +19,24 @@ namespace Ajedrez
 
                 string sql =
                     $"insert into bitacora (id, fecha, tipo_evento, id_jugador) values ({nuevoId}, GETDATE(), '{evento}', {jugador.Id})";
-                int resultado = acceso.Escribir(sql);
+                resultado = acceso.Escribir(sql);
                 if (resultado <= 0)
                 {
                     Console.WriteLine($"No se guardo el evento de bitacora {evento} para el jugador {jugador.Name}");
+                    return -1;
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error registrando bitacora para el jugador {jugador?.Name}: {ex.Message}");
+                return -1;
             }
             acceso.Cerrar();
-            
+            return resultado;
+
         }
 
-        public static int RegistrarInicioPartida(Jugador jugadorBlancas, Jugador jugadorNegras)
+        public static int RegistrarEventoInicioPartida(Jugador jugadorBlancas, Jugador jugadorNegras)
         {
 
             var acceso = new Acceso();
@@ -44,7 +49,7 @@ namespace Ajedrez
 
                 string sql =
                     $"insert into bitacora (id, fecha, tipo_evento, id_partida, id_jugador_blancas, id_jugador_negras) " +
-                    $"values ({nuevoRegistroId}, GETDATE(), '{Evento.PARTIDA_INICIO}', {nuevoIdPartida}, {jugadorBlancas.Id}, {jugadorNegras.Id})";
+                    $"values ({nuevoRegistroId}, GETDATE(), '{EventType.PARTIDA_INICIO}', {nuevoIdPartida}, {jugadorBlancas.Id}, {jugadorNegras.Id})";
 
                 int resultado = acceso.Escribir(sql);
                 if (resultado <= 0)
@@ -63,18 +68,18 @@ namespace Ajedrez
             }
         }
 
-        public static void RegistrarFinPartida(int idPartida, int idJugadorBlancas, int idJugadorNegras, int idGanador, int idPerdedor, bool empate, int duracionSegundos)
+        public static void RegistrarEventoFinPartida(int idPartida, int idJugadorBlancas, int idJugadorNegras, int idGanador, int idPerdedor, bool empate, int duracionSegundos)
         {
             var acceso = new Acceso();
             try
             {
                 acceso.Abrir();
                 int nuevoRegistroId = acceso.LeerEscalar("select isnull(max(id),0) + 1 from bitacora");
-                string sql = 
+                string sql =
                     $"insert into bitacora (id, fecha, tipo_evento, id_partida, id_jugador_blancas, id_jugador_negras, id_ganador, id_perdedor, empate, duracion_segundos) " +
-                    $"values ({nuevoRegistroId}, GETDATE(), '{Evento.PARTIDA_FIN}', {idPartida},{idJugadorBlancas}, {idJugadorNegras}, {idGanador}, {idPerdedor}, {(byte)(empate ? 1 : 0)}, {duracionSegundos})";
-                
-                
+                    $"values ({nuevoRegistroId}, GETDATE(), '{EventType.PARTIDA_FIN}', {idPartida},{idJugadorBlancas}, {idJugadorNegras}, {idGanador}, {idPerdedor}, {(byte)(empate ? 1 : 0)}, {duracionSegundos})";
+
+
                 int resultado = acceso.Escribir(sql);
                 if (resultado <= 0)
                 {

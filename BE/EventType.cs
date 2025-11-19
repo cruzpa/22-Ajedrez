@@ -1,6 +1,6 @@
-namespace Ajedrez
+namespace BE
 {
-    public enum Evento
+    public enum EventType
     {
         LOGIN,
         LOGOUT,
