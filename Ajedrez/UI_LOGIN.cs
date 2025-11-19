@@ -6,6 +6,7 @@ namespace Ajedrez
     public partial class UI_LOGIN : UserControl
     {
         public event Action<Jugador> OnLoginSuccess;
+        public Jugador jugador { get; set; }
         public UI_LOGIN()
         {
             InitializeComponent();
@@ -18,7 +19,7 @@ namespace Ajedrez
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var jugador = getJugador(textBox1.Text, textBox2.Text);
+            jugador = getJugador(textBox1.Text, textBox2.Text);
 
             if (jugador != null)
             {
@@ -69,6 +70,16 @@ namespace Ajedrez
                 }
             }
             return null;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            
+            this.Hide();
+            HistorialPartidas historial = new HistorialPartidas(jugador);
+            DialogResult resultado = historial.ShowDialog();
+            this.Show();
+            
         }
     }
 }
