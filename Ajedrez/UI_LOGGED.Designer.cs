@@ -41,7 +41,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 26);
+            this.label1.Location = new System.Drawing.Point(18, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 13);
             this.label1.TabIndex = 0;
@@ -50,7 +50,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 56);
+            this.label2.Location = new System.Drawing.Point(18, 30);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 13);
             this.label2.TabIndex = 1;
@@ -59,7 +59,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 84);
+            this.label3.Location = new System.Drawing.Point(18, 58);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 13);
             this.label3.TabIndex = 2;
@@ -68,7 +68,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(163, 26);
+            this.label4.Location = new System.Drawing.Point(164, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 13);
             this.label4.TabIndex = 3;
@@ -77,7 +77,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(163, 56);
+            this.label5.Location = new System.Drawing.Point(164, 30);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(54, 13);
             this.label5.TabIndex = 4;
@@ -86,7 +86,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(163, 84);
+            this.label6.Location = new System.Drawing.Point(164, 58);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 13);
             this.label6.TabIndex = 5;
@@ -94,9 +94,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(43, 151);
+            this.button1.Location = new System.Drawing.Point(44, 125);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(174, 48);
+            this.button1.Size = new System.Drawing.Size(174, 26);
             this.button1.TabIndex = 6;
             this.button1.Text = "Logout";
             this.button1.UseVisualStyleBackColor = true;
@@ -104,7 +104,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(43, 117);
+            this.button3.Location = new System.Drawing.Point(44, 91);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(174, 28);
             this.button3.TabIndex = 8;
@@ -125,7 +125,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "UI_LOGGED";
-            this.Size = new System.Drawing.Size(261, 226);
+            this.Size = new System.Drawing.Size(261, 158);
             this.ResumeLayout(false);
             this.PerformLayout();
 

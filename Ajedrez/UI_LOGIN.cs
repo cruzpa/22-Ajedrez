@@ -17,7 +17,7 @@ namespace Ajedrez
 
         public void ConfigurarTitulo(string titulo)
         {
-            label1.Text = titulo;
+            //label1.Text = titulo;
         }
 
         private void button1_Click(object sender, EventArgs e)

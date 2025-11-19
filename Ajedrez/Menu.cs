@@ -102,8 +102,8 @@ namespace Ajedrez
             
             // Recrear UI_LOGIN1
             uI_LOGIN1 = new UI_LOGIN();
-            uI_LOGIN1.Location = new System.Drawing.Point(27, 34);
-            uI_LOGIN1.Size = new System.Drawing.Size(252, 381);
+            uI_LOGIN1.Location = new System.Drawing.Point(18, 92);
+            uI_LOGIN1.Size = new System.Drawing.Size(250, 150);
             uI_LOGIN1.ConfigurarTitulo("Jugador Blancas");
             uI_LOGIN1.OnLoginSuccess += LoginBlancasCompletado;
             this.Controls.Add(uI_LOGIN1);
@@ -126,8 +126,8 @@ namespace Ajedrez
             
             // Recrear UI_LOGIN2
             uI_LOGIN2 = new UI_LOGIN();
-            uI_LOGIN2.Location = new System.Drawing.Point(480, 40);
-            uI_LOGIN2.Size = new System.Drawing.Size(226, 374);
+            uI_LOGIN2.Location = new System.Drawing.Point(525, 92);
+            uI_LOGIN2.Size = new System.Drawing.Size(250, 150);
             uI_LOGIN2.ConfigurarTitulo("Jugador Negras");
             uI_LOGIN2.OnLoginSuccess += LoginNegrasCompletado;
             this.Controls.Add(uI_LOGIN2);

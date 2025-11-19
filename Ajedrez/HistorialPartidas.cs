@@ -61,10 +61,6 @@ namespace Ajedrez
             label2.Text = string.Join("   ", partida.Movimientos);
         }
 
-        // ------------------------------------------------
-        // Helpers
-        // ------------------------------------------------
-
         private string ObtenerRival(GameHistory p, Jugador jugador)
         {
 
