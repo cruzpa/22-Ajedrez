@@ -9,25 +9,9 @@ namespace DAL
 {
     public class XMLManager
     {
-        private static string GetProjectRoot()
-        {
-            string dir = AppDomain.CurrentDomain.BaseDirectory;
-            while (dir != null && !Directory.Exists(Path.Combine(dir, "Ajedrez")))
-            {
-                dir = Directory.GetParent(dir)?.FullName;
-            }
 
-            return dir;
-        }
-
-        private static readonly string projectRoot = GetProjectRoot();
-
-        private static readonly string PathHistorialXsd =
-            Path.Combine(projectRoot, @"DAL\data\historial_partidas.xsd");
-
-        private static readonly string PathHistorialXml =
-            Path.Combine(projectRoot, @"DAL\data\historial_partidas.xml");
-
+        private static readonly string PathHistorialXsd = "data\\historial_partidas.xsd";
+        private static readonly string PathHistorialXml = "data\\historial_partidas.xml";
 
         public void GuardarPartidaEnHistorial(GameHistory gameHistory)
         {
