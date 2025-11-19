@@ -1,4 +1,5 @@
 ﻿using DAL;
+using System;
 
 namespace BE
 {
@@ -14,6 +15,12 @@ namespace BE
         {
             return jugadorMapper.Leer(jugador.Name, jugador.Pass);
         }
+
+        public String Leer(int id)
+        {
+            return jugadorMapper.LeerName(id);
+        }
+
 
         public void ActualizarHistorial(int jugadorId, bool gano, bool empato, int tiempoJugadoSegundos)
         {

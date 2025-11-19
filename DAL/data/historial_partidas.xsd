@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- Elemento raíz -->
+  <xs:element name="HistorialPartidas">
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:element name="Partida" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+
+              <!-- METADATA -->
+              <xs:element name="Metadata">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Fecha" type="xs:string"/>
+                    <xs:element name="IdPartida" type="xs:int"/>
+                    <xs:element name="IdJugadorBlancas" type="xs:int"/>
+                    <xs:element name="IdJugadorNegras" type="xs:int"/>
+                    <xs:element name="IdGanador" type="xs:int"/>
+                    <xs:element name="IdPerdedor" type="xs:int"/>
+                    <xs:element name="Empate" type="xs:boolean"/>
+                    <xs:element name="DuracionSegundos" type="xs:int"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+              <!-- MOVIMIENTOS -->
+              <xs:element name="Movimientos">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Movimiento" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

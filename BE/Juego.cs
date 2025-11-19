@@ -18,7 +18,7 @@ namespace BE
         private int numeroMovimiento = 1;
         private List<string> movimientos = new List<string>();
         
-        public event Action<ColorPieza, bool, Jugador, Jugador> FinPartida; // Color del ganador, bool esEmpate
+        public event Action<ColorPieza, bool, Jugador, Jugador, List<String>> FinPartida; // Color del ganador, bool esEmpate
 
         public Juego(Tablero tablero)
         {
@@ -416,14 +416,14 @@ namespace BE
                 Console.WriteLine($"JAQUE MATE! Las {ganador} ganan.");
 
                 // notificar fin de partida
-                FinPartida?.Invoke(colorGanador, false, Blancas, Negras);
+                FinPartida?.Invoke(colorGanador, false, Blancas, Negras, movimientos);
             }
             else if (EsAhogado(colorJugadorActual))
             {
                 Console.WriteLine($"AHOGADO! La partida termina en empate.");
                 
                 //notificar fin de partida (empate)
-                FinPartida?.Invoke(ColorPieza.Blanco, true, Blancas, Negras); // Color no importa en empate
+                FinPartida?.Invoke(ColorPieza.Blanco, true, Blancas, Negras, movimientos); // Color no importa en empate
             }
         }
 
