@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace Ajedrez
-{
+namespace BE
+{ 
     public class Torre : Pieza
     {
         public Torre(ColorPieza color) : base(color)

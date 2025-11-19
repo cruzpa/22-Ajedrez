@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using BE;
+using BLL;
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Ajedrez
@@ -20,7 +16,9 @@ namespace Ajedrez
         private DateTime tiempoInicio;
         private bool partidaIniciada = false;
         private int IdPartida { get; set; }
-        
+
+        private JugadorBLL jugadorBLL = new JugadorBLL();
+
         public Mesa(Jugador jugadorBlancas, Jugador jugadorNegras)
         {
             InitializeComponent();
@@ -108,7 +106,7 @@ namespace Ajedrez
 
             updateHistorial(esEmpate, tiempoJugadoSegundos, ganador, perdedor);
 
-            Bitacora.RegistrarFinPartida(IdPartida, Blancas.Id, Negras.Id, ganador.Id, perdedor.Id, esEmpate, tiempoJugadoSegundos);
+            Bitacora.RegistrarEventoFinPartida(IdPartida, Blancas.Id, Negras.Id, ganador.Id, perdedor.Id, esEmpate, tiempoJugadoSegundos);
 
             FinPartida finPartida = new FinPartida();
             finPartida.JugadorGanador = ganador;
@@ -139,14 +137,15 @@ namespace Ajedrez
         private void updateHistorial(bool esEmpate, int tiempoJugadoSegundos, Jugador ganador, Jugador perdedor)
         {
             if (esEmpate)
-            {
-                JugadorBlancas.ActualizarHistorial(false, true, tiempoJugadoSegundos);
-                JugadorNegras.ActualizarHistorial(false, true, tiempoJugadoSegundos);
+            {;
+                jugadorBLL.ActualizarHistorial(JugadorBlancas.Id, false, true, tiempoJugadoSegundos);
+                jugadorBLL.ActualizarHistorial(JugadorNegras.Id, false, true, tiempoJugadoSegundos);
             }
             else
             {
-                ganador.ActualizarHistorial(true, false, tiempoJugadoSegundos);
-                perdedor.ActualizarHistorial(false, false, tiempoJugadoSegundos);
+
+                jugadorBLL.ActualizarHistorial(ganador.Id, true, false, tiempoJugadoSegundos);
+                jugadorBLL.ActualizarHistorial(perdedor.Id, false, false, tiempoJugadoSegundos);
             }
         }
 

@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BE;
+using BLL;
+using System;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Ajedrez
 {
@@ -15,64 +9,193 @@ namespace Ajedrez
     {
         public Jugador jugadorBlancas;
         public Jugador jugadorNegras;
+        
+        private UI_LOGGED uI_LOGGED1; // Para jugador Blancas
+        private UI_LOGGED uI_LOGGED2; // Para jugador Negras
+
+
+        public JugadorBLL jugadorBLL = new JugadorBLL();
 
         public Menu()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
+            ConfigurarLogins();
+            ConfigurarTitulosLogin();
+        }
 
-            //this.StartPosition = FormStartPosition.CenterScreen;
-            //this.ClientSize = new Size(100, 100);
-            //this.MinimumSize = new Size(100, 100);
-            //Mesa.ShowDialog();
+        private void ConfigurarTitulosLogin()
+        {
+            uI_LOGIN1.ConfigurarTitulo("Jugador Blancas");
+            uI_LOGIN2.ConfigurarTitulo("Jugador Negras");
+        }
+        
+        private void ConfigurarLogins()
+        {
+            uI_LOGIN1.OnLoginSuccess += LoginBlancasCompletado;
+            uI_LOGIN2.OnLoginSuccess += LoginNegrasCompletado;
+        }
+        
+        private void LoginBlancasCompletado(Jugador jugador)
+        {
+            if (jugadorNegras != null && jugadorNegras.Id == jugador.Id)
+            {
+                MessageBox.Show("Este jugador ya esta logueado como Negras. Selecciona un jugador diferente.", "Jugador duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            jugadorBlancas = jugador;
+            Bitacora.RegistrarEventoSesion(jugadorBlancas, EventType.LOGIN);            
+            // Guardar posición y tamaño antes de remover
+            var location = uI_LOGIN1.Location;
+            var size = uI_LOGIN1.Size;
+            
+            // Reemplazar UI_LOGIN1 con UI_LOGGED1
+            this.Controls.Remove(uI_LOGIN1);
+            uI_LOGGED1 = new UI_LOGGED(jugador);
+            uI_LOGGED1.Location = location;
+            uI_LOGGED1.Size = size;
+            uI_LOGGED1.OnLogout += LogoutBlancasCompletado;
+            this.Controls.Add(uI_LOGGED1);
+            
+            VerificarAmbosLogueados();
+        }
+        
+        private void LoginNegrasCompletado(Jugador jugador)
+        {
+            if (jugadorBlancas != null && jugadorBlancas.Id == jugador.Id)
+            {
+                MessageBox.Show("Este jugador ya esta logueado como Blancas. Selecciona un jugador diferente.", "Jugador duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            jugadorNegras = jugador;
+            Bitacora.RegistrarEventoSesion(jugadorNegras, EventType.LOGIN);
+
+            // Guardar posición y tamaño antes de remover
+            var location = uI_LOGIN2.Location;
+            var size = uI_LOGIN2.Size;
+            
+            // Reemplazar UI_LOGIN2 con UI_LOGGED2
+            this.Controls.Remove(uI_LOGIN2);
+            uI_LOGGED2 = new UI_LOGGED(jugador);
+            uI_LOGGED2.Location = location;
+            uI_LOGGED2.Size = size;
+            uI_LOGGED2.OnLogout += LogoutNegrasCompletado;
+            this.Controls.Add(uI_LOGGED2);
+            
+            VerificarAmbosLogueados();
+        }
+        
+        private void LogoutBlancasCompletado()
+        {
+            Bitacora.RegistrarEventoSesion(jugadorBlancas, EventType.LOGOUT);
+            jugadorBlancas = null;
+            
+            // Reemplazar UI_LOGGED1 con UI_LOGIN1
+            if (uI_LOGGED1 != null)
+            {
+                this.Controls.Remove(uI_LOGGED1);
+                uI_LOGGED1.Dispose();
+                uI_LOGGED1 = null;
+            }
+            
+            // Recrear UI_LOGIN1
+            uI_LOGIN1 = new UI_LOGIN();
+            uI_LOGIN1.Location = new System.Drawing.Point(27, 34);
+            uI_LOGIN1.Size = new System.Drawing.Size(252, 381);
+            uI_LOGIN1.ConfigurarTitulo("Jugador Blancas");
+            uI_LOGIN1.OnLoginSuccess += LoginBlancasCompletado;
+            this.Controls.Add(uI_LOGIN1);
+            
+            VerificarAmbosLogueados();
+        }
+        
+        private void LogoutNegrasCompletado()
+        {
+            Bitacora.RegistrarEventoSesion(jugadorNegras, EventType.LOGOUT);
+            jugadorNegras = null;
+            
+            // Reemplazar UI_LOGGED2 con UI_LOGIN2
+            if (uI_LOGGED2 != null)
+            {
+                this.Controls.Remove(uI_LOGGED2);
+                uI_LOGGED2.Dispose();
+                uI_LOGGED2 = null;
+            }
+            
+            // Recrear UI_LOGIN2
+            uI_LOGIN2 = new UI_LOGIN();
+            uI_LOGIN2.Location = new System.Drawing.Point(480, 40);
+            uI_LOGIN2.Size = new System.Drawing.Size(226, 374);
+            uI_LOGIN2.ConfigurarTitulo("Jugador Negras");
+            uI_LOGIN2.OnLoginSuccess += LoginNegrasCompletado;
+            this.Controls.Add(uI_LOGIN2);
+            
+            VerificarAmbosLogueados();
+        }
+        
+        private void VerificarAmbosLogueados()
+        {
+            if (jugadorBlancas != null && jugadorNegras != null)
+            {
+                Console.WriteLine("Ambos jugadores están listos");
+                button1.Enabled = true;
+                button1.Select();
+            }
+            else
+            {
+                button1.Enabled = false;
+            }
+        }
+
+        private void Menu2_Load(object sender, EventArgs e)
+        {
+            // Inicializar el botón como deshabilitado
+            button1.Enabled = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            jugadorBlancas = getJugador(userBlancas.Text, passBlancas.Text);
-            infoLogueo(jugadorBlancas);
-
-
-        }
-
-        private Jugador getJugador(string username, string password)
-        {
-            if (!isEmpty(username) && !isEmpty(password))
+            if (jugadorBlancas == null || jugadorNegras == null)
             {
-                return Jugador.Leer(username, password);
+                MessageBox.Show("Ambos jugadores deben estar logueados para comenzar el juego.", 
+                    "Jugadores incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            return null;
-        }
-        private bool isEmpty(string s)
-        {
-            return s == null || s.Length == 0;
-        }
 
-        private void infoLogueo(Jugador jugador)
-        {
-            if (jugador != null) 
+            Mesa mesa = new Mesa(jugadorBlancas, jugadorNegras);
+            this.Hide();
+
+            DialogResult resultado = mesa.ShowDialog();
+            
+            // Si "salir" entonces cerrar la aplicacion
+            if (resultado == DialogResult.Cancel)
             {
-                MessageBox.Show("Jugador logueado correctamente");
-                //Cambiar estado de botones, agregar desloguear; //volver a la pantalla anterior
+                Application.Exit();
             }
             else
             {
-                MessageBox.Show("No existe el jugador.");
+                RefrescarJugadoresLogueados();
+                this.Show();
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void RefrescarJugadoresLogueados()
         {
-            //crear usuario..
+            jugadorBlancas = ActualizarJugadorLogueado(jugadorBlancas, uI_LOGGED1);
+            jugadorNegras = ActualizarJugadorLogueado(jugadorNegras, uI_LOGGED2);
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private Jugador ActualizarJugadorLogueado(Jugador jugador, UI_LOGGED control)
         {
-            //Mesa.ShowDialog();
-        }
-
-        private void Menu_Load(object sender, EventArgs e)
-        {
+            Jugador jugadorActualizado = jugadorBLL.Leer(jugador);
+            if (jugadorActualizado != null)
+            {
+                control.ActualizarJugador(jugadorActualizado);
+                return jugadorActualizado;
+            }
+            return jugador;
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BE;
+using BLL;
+using System;
 using System.Windows.Forms;
 
 namespace Ajedrez
@@ -7,6 +9,7 @@ namespace Ajedrez
     {
         public event Action<Jugador> OnLoginSuccess;
         public Jugador jugador { get; set; }
+        public JugadorBLL jugadorBLL = new JugadorBLL();
         public UI_LOGIN()
         {
             InitializeComponent();
@@ -35,7 +38,8 @@ namespace Ajedrez
         {
             if (!isEmpty(username) && !isEmpty(password))
             {
-                return Jugador.Leer(username, password);
+                Jugador jugador = new Jugador(username, password);
+                return jugadorBLL.Leer(jugador);
             }
             return null;
         }
@@ -63,7 +67,7 @@ namespace Ajedrez
             if (!isEmpty(username) && !isEmpty(password))
             {
                 Jugador jugador = new Jugador(username, password);
-                int resultado = jugador.Insertar();
+                int resultado = jugadorBLL.Insertar(jugador);
                 if (resultado >= 0 )
                 {
                     return jugador;

@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BE.Alfil" Collapsed="true">
+    <Position X="5.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Alfil.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.BitacoraEvent" Collapsed="true">
+    <Position X="13.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAKAAECgAAAAAMAAAAAAAAEAAAAIgBAAAAAAAAAAAA=</HashCode>
+      <FileName>BitacoraEvent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.Caballo" Collapsed="true">
+    <Position X="12" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Caballo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.Casillero" Collapsed="true">
+    <Position X="7.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAECAAAAAAAkgAAAAAAAAAAAAIEAAAAAAAAAYAA=</HashCode>
+      <FileName>Casillero.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.Juego" Collapsed="true">
+    <Position X="4.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgBBQkCCAEAAEgAACAgCAAAgAEIBoQAIAAAAQ=</HashCode>
+      <FileName>Juego.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.Jugador" Collapsed="true">
+    <Position X="5.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAQAAAAAAAAAAAQAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Jugador.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.JugadorHistorial" Collapsed="true">
+    <Position X="5.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAQAAAAAAAAAGAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>JugadorHistorial.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.Peon" Collapsed="true">
+    <Position X="7.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Peon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.Pieza" Collapsed="true">
+    <Position X="10.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAgAAAAAAAABAAAAAAgAAAABA=</HashCode>
+      <FileName>Pieza.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BE.Rey" Collapsed="true">
+    <Position X="14.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rey.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.Reyna" Collapsed="true">
+    <Position X="16.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reyna.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.Tablero" Collapsed="true">
+    <Position X="7.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAgAAAAAAAAAAAAAEAIAABAAAAECCAAAA=</HashCode>
+      <FileName>Tablero.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BE.Torre" Collapsed="true">
+    <Position X="9.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Torre.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="BE.ColorPieza" Collapsed="true">
+    <Position X="9" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAACAAAAA=</HashCode>
+      <FileName>ColorPieza.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BE.EventType" Collapsed="true">
+    <Position X="13.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAEAAAAAAgAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EventType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BE.Turno" Collapsed="true">
+    <Position X="9" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Turno.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Delegate Name="BE.DelEnviarCasillero" Collapsed="true">
+    <Position X="5.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DelEnviarCasillero.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

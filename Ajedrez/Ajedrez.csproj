@@ -46,14 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Acceso.cs" />
-    <Compile Include="Alfil.cs" />
-    <Compile Include="Bitacora.cs" />
-    <Compile Include="Caballo.cs" />
-    <Compile Include="Casillero.cs" />
-    <Compile Include="ColorPieza.cs" />
-    <Compile Include="DelEnviarCasillero.cs" />
-    <Compile Include="Evento.cs" />
     <Compile Include="FinPartida.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,25 +58,11 @@
     <Compile Include="HistorialPartidas.Designer.cs">
       <DependentUpon>HistorialPartidas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Juego.cs" />
-    <Compile Include="JugadorHistorial.cs" />
-    <Compile Include="Login.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
-    </Compile>
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Menu2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Menu2.Designer.cs">
-      <DependentUpon>Menu2.cs</DependentUpon>
     </Compile>
     <Compile Include="Mesa.cs">
       <SubType>Form</SubType>
@@ -92,16 +70,8 @@
     <Compile Include="Mesa.Designer.cs">
       <DependentUpon>Mesa.cs</DependentUpon>
     </Compile>
-    <Compile Include="Peon.cs" />
-    <Compile Include="Pieza.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rey.cs" />
-    <Compile Include="Reyna.cs" />
-    <Compile Include="Tablero.cs" />
-    <Compile Include="Jugador.cs" />
-    <Compile Include="Torre.cs" />
-    <Compile Include="Turno.cs" />
     <Compile Include="UI_CASILLERO.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -126,14 +96,8 @@
     <EmbeddedResource Include="HistorialPartidas.resx">
       <DependentUpon>HistorialPartidas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Menu2.resx">
-      <DependentUpon>Menu2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mesa.resx">
       <DependentUpon>Mesa.cs</DependentUpon>
@@ -156,8 +120,6 @@
     <EmbeddedResource Include="UI_LOGIN.resx">
       <DependentUpon>UI_LOGIN.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -208,6 +170,16 @@
     <Content Include="img\wr.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BE\BE.csproj">
+      <Project>{2c6824c7-a35c-4716-a314-7ee2a5c9d5d9}</Project>
+      <Name>BE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{f970c678-3917-43bf-b34a-776e8ac3690e}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
