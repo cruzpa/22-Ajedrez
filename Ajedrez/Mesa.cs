@@ -1,6 +1,7 @@
 ﻿using BE;
 using BLL;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -18,7 +19,7 @@ namespace Ajedrez
         private int IdPartida { get; set; }
 
         private JugadorBLL jugadorBLL = new JugadorBLL();
-
+        private XMLHelper XMLHelper = new XMLHelper();
         public Mesa(Jugador jugadorBlancas, Jugador jugadorNegras)
         {
             InitializeComponent();
@@ -80,7 +81,7 @@ namespace Ajedrez
             }
         }
 
-        private void Juego_FinPartida(ColorPieza colorGanador, bool esEmpate, Jugador Blancas, Jugador Negras)
+        private void Juego_FinPartida(ColorPieza colorGanador, bool esEmpate, Jugador Blancas, Jugador Negras, List<String> movimientos)
         {
 
             TimeSpan tiempoJugado = DateTime.Now - tiempoInicio;
@@ -107,6 +108,21 @@ namespace Ajedrez
             updateHistorial(esEmpate, tiempoJugadoSegundos, ganador, perdedor);
 
             Bitacora.RegistrarEventoFinPartida(IdPartida, Blancas.Id, Negras.Id, ganador.Id, perdedor.Id, esEmpate, tiempoJugadoSegundos);
+
+            GameHistory gameHistory = new GameHistory
+            {
+                Fecha = DateTime.Now,
+                IdPartida = IdPartida,
+                IdBlancas = Blancas.Id,
+                IdNegras = Negras.Id,
+                IdGanador = ganador != null ? ganador.Id : 0,
+                IdPerdedor = perdedor != null ? perdedor.Id : 0,
+                Empate = esEmpate,
+                DuracionSegundos = tiempoJugadoSegundos,
+                Movimientos = movimientos
+            };
+
+            XMLHelper.GuardarPartida(gameHistory);
 
             FinPartida finPartida = new FinPartida();
             finPartida.JugadorGanador = ganador;

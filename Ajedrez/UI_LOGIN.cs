@@ -76,14 +76,6 @@ namespace Ajedrez
             return null;
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            
-            this.Hide();
-            HistorialPartidas historial = new HistorialPartidas(jugador);
-            DialogResult resultado = historial.ShowDialog();
-            this.Show();
-            
-        }
+       
     }
 }

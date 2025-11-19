@@ -1,0 +1,176 @@
+<?xml version="1.0" standalone="yes"?>
+<HistorialPartidas xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Partida>
+    <Metadata>
+      <Fecha>2025-11-19T05:52:24</Fecha>
+      <IdPartida>21</IdPartida>
+      <IdJugadorBlancas>1</IdJugadorBlancas>
+      <IdJugadorNegras>2</IdJugadorNegras>
+      <IdGanador>1</IdGanador>
+      <IdPerdedor>2</IdPerdedor>
+      <Empate>false</Empate>
+      <DuracionSegundos>5</DuracionSegundos>
+    </Metadata>
+    <Movimientos>
+      <Movimiento>1. Pe4</Movimiento>
+      <Movimiento>2. Pa6</Movimiento>
+      <Movimiento>3. Bc4</Movimiento>
+      <Movimiento>4. Pa5</Movimiento>
+      <Movimiento>5. Qf3</Movimiento>
+      <Movimiento>6. Pa4</Movimiento>
+      <Movimiento>7. Qxf7#</Movimiento>
+    </Movimientos>
+  </Partida>
+  <Partida>
+    <Metadata>
+      <Fecha>2025-11-19T05:53:21</Fecha>
+      <IdPartida>22</IdPartida>
+      <IdJugadorBlancas>3</IdJugadorBlancas>
+      <IdJugadorNegras>1</IdJugadorNegras>
+      <IdGanador>3</IdGanador>
+      <IdPerdedor>1</IdPerdedor>
+      <Empate>false</Empate>
+      <DuracionSegundos>6</DuracionSegundos>
+    </Metadata>
+    <Movimientos>
+      <Movimiento>1. Pe3</Movimiento>
+      <Movimiento>2. Ph6</Movimiento>
+      <Movimiento>3. Bc4</Movimiento>
+      <Movimiento>4. Ph5</Movimiento>
+      <Movimiento>5. Qf3</Movimiento>
+      <Movimiento>6. Ph4</Movimiento>
+      <Movimiento>7. Qxf7#</Movimiento>
+    </Movimientos>
+  </Partida>
+  <Partida>
+    <Metadata>
+      <Fecha>2025-11-19T06:03:29</Fecha>
+      <IdPartida>23</IdPartida>
+      <IdJugadorBlancas>1</IdJugadorBlancas>
+      <IdJugadorNegras>2</IdJugadorNegras>
+      <IdGanador>1</IdGanador>
+      <IdPerdedor>2</IdPerdedor>
+      <Empate>false</Empate>
+      <DuracionSegundos>6</DuracionSegundos>
+    </Metadata>
+    <Movimientos>
+      <Movimiento>1. Pe3</Movimiento>
+      <Movimiento>2. Pa6</Movimiento>
+      <Movimiento>3. Bc4</Movimiento>
+      <Movimiento>4. Pa5</Movimiento>
+      <Movimiento>5. Qf3</Movimiento>
+      <Movimiento>6. Pa4</Movimiento>
+      <Movimiento>7. Qxf7#</Movimiento>
+    </Movimientos>
+  </Partida>
+  <Partida>
+    <Metadata>
+      <Fecha>2025-11-19T06:03:48</Fecha>
+      <IdPartida>24</IdPartida>
+      <IdJugadorBlancas>1</IdJugadorBlancas>
+      <IdJugadorNegras>2</IdJugadorNegras>
+      <IdGanador>1</IdGanador>
+      <IdPerdedor>2</IdPerdedor>
+      <Empate>false</Empate>
+      <DuracionSegundos>7</DuracionSegundos>
+    </Metadata>
+    <Movimientos>
+      <Movimiento>1. Pe3</Movimiento>
+      <Movimiento>2. Pa6</Movimiento>
+      <Movimiento>3. Bc4</Movimiento>
+      <Movimiento>4. Pa5</Movimiento>
+      <Movimiento>5. Qf3</Movimiento>
+      <Movimiento>6. Ph6</Movimiento>
+      <Movimiento>7. Qxf7#</Movimiento>
+    </Movimientos>
+  </Partida>
+  <Partida>
+    <Metadata>
+      <Fecha>2025-11-19T06:21:05</Fecha>
+      <IdPartida>25</IdPartida>
+      <IdJugadorBlancas>1</IdJugadorBlancas>
+      <IdJugadorNegras>2</IdJugadorNegras>
+      <IdGanador>1</IdGanador>
+      <IdPerdedor>2</IdPerdedor>
+      <Empate>false</Empate>
+      <DuracionSegundos>105</DuracionSegundos>
+    </Metadata>
+    <Movimientos>
+      <Movimiento>1. Pe4</Movimiento>
+      <Movimiento>2. Pa6</Movimiento>
+      <Movimiento>3. Pa3</Movimiento>
+      <Movimiento>4. Pb6</Movimiento>
+      <Movimiento>5. Pb3</Movimiento>
+      <Movimiento>6. Pc6</Movimiento>
+      <Movimiento>7. Pc3</Movimiento>
+      <Movimiento>8. Pd6</Movimiento>
+      <Movimiento>9. Pd3</Movimiento>
+      <Movimiento>10. Pe6</Movimiento>
+      <Movimiento>11. Pf3</Movimiento>
+      <Movimiento>12. Pf5</Movimiento>
+      <Movimiento>13. Pg3</Movimiento>
+      <Movimiento>14. Pg6</Movimiento>
+      <Movimiento>15. Ph3</Movimiento>
+      <Movimiento>16. Ph5</Movimiento>
+      <Movimiento>17. Ra2</Movimiento>
+      <Movimiento>18. Ra7</Movimiento>
+      <Movimiento>19. Nd2</Movimiento>
+      <Movimiento>20. Nd7</Movimiento>
+      <Movimiento>21. Bb2</Movimiento>
+      <Movimiento>22. Bb7</Movimiento>
+      <Movimiento>23. Qc2</Movimiento>
+      <Movimiento>24. Qc7</Movimiento>
+      <Movimiento>25. Ke2</Movimiento>
+      <Movimiento>26. Ke7</Movimiento>
+      <Movimiento>27. Pf4</Movimiento>
+      <Movimiento>28. Nf6</Movimiento>
+      <Movimiento>29. Nf3</Movimiento>
+      <Movimiento>30. Bg7</Movimiento>
+      <Movimiento>31. Bg2</Movimiento>
+      <Movimiento>32. Rh6</Movimiento>
+      <Movimiento>33. Rh2</Movimiento>
+      <Movimiento>34. Pa5</Movimiento>
+      <Movimiento>35. Pa4</Movimiento>
+      <Movimiento>36. Pb5</Movimiento>
+      <Movimiento>37. Pb4</Movimiento>
+      <Movimiento>38. Pc5</Movimiento>
+      <Movimiento>39. Pc4</Movimiento>
+      <Movimiento>40. Pd5</Movimiento>
+      <Movimiento>41. Pd4</Movimiento>
+      <Movimiento>42. Pe5</Movimiento>
+      <Movimiento>43. Pg4</Movimiento>
+      <Movimiento>44. Pg5</Movimiento>
+      <Movimiento>45. Ph4</Movimiento>
+      <Movimiento>46. Ke6</Movimiento>
+      <Movimiento>47. Ke3</Movimiento>
+      <Movimiento>48. Nb6</Movimiento>
+      <Movimiento>49. Bc3</Movimiento>
+      <Movimiento>50. Qc6</Movimiento>
+      <Movimiento>51. Nb3</Movimiento>
+      <Movimiento>52. Ra6</Movimiento>
+      <Movimiento>53. Ra3</Movimiento>
+      <Movimiento>54. Qd6</Movimiento>
+      <Movimiento>55. Qd3</Movimiento>
+      <Movimiento>56. Bc6</Movimiento>
+      <Movimiento>57. Rh3</Movimiento>
+      <Movimiento>58. Rg6</Movimiento>
+      <Movimiento>59. Rg3</Movimiento>
+      <Movimiento>60. Bh6</Movimiento>
+      <Movimiento>61. Bh3</Movimiento>
+      <Movimiento>62. Pdxe4</Movimiento>
+      <Movimiento>63. Pdxe5</Movimiento>
+      <Movimiento>64. Qxe5</Movimiento>
+      <Movimiento>65. Bxe5</Movimiento>
+      <Movimiento>66. Nd5+</Movimiento>
+      <Movimiento>67. Qxd5+</Movimiento>
+      <Movimiento>68. Ke7</Movimiento>
+      <Movimiento>69. Qd6+</Movimiento>
+      <Movimiento>70. Ke8</Movimiento>
+      <Movimiento>71. Bf6</Movimiento>
+      <Movimiento>72. Rg7</Movimiento>
+      <Movimiento>73. Qe6+</Movimiento>
+      <Movimiento>74. Re7</Movimiento>
+      <Movimiento>75. Qxe7#</Movimiento>
+    </Movimientos>
+  </Partida>
+</HistorialPartidas>

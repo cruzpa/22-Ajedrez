@@ -49,6 +49,7 @@
     <Compile Include="BitacoraEvent.cs" />
     <Compile Include="DelEnviarCasillero.cs" />
     <Compile Include="EventType.cs" />
+    <Compile Include="GameHistory.cs" />
     <Compile Include="Juego.cs" />
     <Compile Include="Jugador.cs" />
     <Compile Include="JugadorHistorial.cs" />

@@ -35,6 +35,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -93,18 +94,29 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(21, 123);
+            this.button1.Location = new System.Drawing.Point(43, 151);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(160, 36);
+            this.button1.Size = new System.Drawing.Size(174, 48);
             this.button1.TabIndex = 6;
             this.button1.Text = "Logout";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(43, 117);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(174, 28);
+            this.button3.TabIndex = 8;
+            this.button3.Text = "Ver Historial de Partidas";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // UI_LOGGED
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -113,7 +125,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "UI_LOGGED";
-            this.Size = new System.Drawing.Size(261, 181);
+            this.Size = new System.Drawing.Size(261, 226);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,5 +140,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button3;
     }
 }

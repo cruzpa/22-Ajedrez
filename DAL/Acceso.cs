@@ -67,5 +67,11 @@ namespace DAL
             return cmd.ExecuteScalar() != null;
         }
 
+        public bool ExisteJugadorById(int id)
+        {
+            SqlCommand cmd = CrearComando($"select id from jugador where id={id}");
+            return cmd.ExecuteScalar() != null;
+        }
+
     }
 }

@@ -110,6 +110,29 @@ namespace DAL
             return jugador;
         }
 
+        public String LeerName(int id)
+        {
+            String name = null;
+            Acceso Acceso = new Acceso();
+            Acceso.Abrir();
+            if (!Acceso.ExisteJugadorById(id))
+            {
+                Console.WriteLine("El jugador no existe");
+                //aca podria tirar una excepcion y atajarla arriba
+                return null;
+            }
+
+            SqlDataReader reader = Acceso.Leer($"select j.name from jugador j where j.id={id}");
+            while (reader.Read())
+            {
+                name = reader["name"].ToString();
+            }
+            reader.Close();
+            Acceso.Cerrar();
+
+            return name;
+        }
+
         public void ActualizarHistorial(int jugadorId, bool gano, bool empato, int tiempoJugadoSegundos)
         {
             Acceso.Abrir();
